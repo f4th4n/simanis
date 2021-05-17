@@ -1,0 +1,78 @@
+tabel roles:
+	id int
+	name string
+
+tabel inventoris (root)
+	id
+	no_inventaris (e.g INV-001)
+	nama_inventaris string
+	no_seri string
+	merk string
+	warna string
+	tanggal_didaftarkan date
+	nilai_kekayaan int
+	lokasi_penempatan string
+	batas_pakai date nullable
+	keterangan string
+	pesan string (e.g akan habis pajak)
+  
+tabel data user
+
+	nomor_id
+	nama
+	password
+	keterangan
+	role_id (tabel role)
+
+tabel data perawatan
+
+	nomor_perawatan string (e.g PRW-001)
+	id_admin int
+	inventaris_id (tabel inventaris)
+	tanggal_perawatan date
+	tanggal_selesai date
+	tempat_perawatan string
+	biaya_perawatan int
+	foto_kwitansi file
+	keterangan string
+	
+tabel data mutasi
+	
+	nomor_mutasi (e.g MTS-001)
+	tanggal_mutasi date
+	inventaris_id (tabel inventaris)
+	lokasi_awal
+	lokasi_tujuan
+	keterangan
+
+tabel pengajuan
+
+	nomor_pengajuan
+	id_pengaju string
+	tanggal_pengajuan
+	nama_inventaris
+	total int
+	keterangan
+
+tabel data laporan pengecekan
+
+	nomor_laporan (e.g LPR-001) string
+	nomor_id_pengecek string
+	nama_pengecek string
+	tanggal_pengecekan date
+
+tabel kondisi inventaris
+
+	inventaris_id
+	masukan_kondisi enum
+	informasi string 
+	tanggal_pengecekan laporan_pengecekan.tanggal_pengecekan
+
+tabel surat perintah
+
+	nomor_surat (e.g PRT-001
+	tanggal_terbit date
+	kepada (users selain pemimpin)
+	perintah string
+	tanggal_pelaksanaan date
+
