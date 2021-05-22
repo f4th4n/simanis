@@ -13,12 +13,16 @@ class AddUsers extends Migration {
 				'unsigned' => true,
 				'auto_increment' => true,
 			],
-			'nama' => [
+			'username' => [
 				'type' => 'VARCHAR',
 				'constraint' => 256,
 				'unique' => true,
 			],
 			'password' => [
+				'type' => 'VARCHAR',
+				'constraint' => 256,
+			],
+			'nama' => [
 				'type' => 'VARCHAR',
 				'constraint' => 256,
 			],
