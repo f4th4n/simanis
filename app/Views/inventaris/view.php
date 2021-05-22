@@ -1,0 +1,10 @@
+<div><?= $row_inventaris['id'] ?></div>
+<div><?= $row_inventaris['no_inventaris'] ?></div>
+<div><?= $row_inventaris['nama'] ?></div>
+<div><?= $row_inventaris['no_seri'] ?></div>
+<div><?= $row_inventaris['merk'] ?></div>
+<div><?= $row_inventaris['tanggal_didaftarkan'] ?></div>
+<div><?= $row_inventaris['nilai_kekayaan'] ?></div>
+<div><?= $row_inventaris['lokasi_penempatan'] ?></div>
+<div><?= $row_inventaris['batas_pakai'] ?></div>
+<div><?= $row_inventaris['keterangan'] ?></div>
