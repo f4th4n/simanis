@@ -28,6 +28,9 @@ class Inventaris extends BaseController {
 	}
 
 	public function create() {
-		return view('inventaris/create');
+		$data = [
+			'title' => 'Tambah Inventaris'
+		];
+		return view('inventaris/create', $data);
 	}
 }
