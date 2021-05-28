@@ -6,7 +6,7 @@
 	<div class="right_col" role="main">
 		<div class="">
 			<div class="row">
-				<div class="col-md-6 col-sm-12">
+				<div class="col-md-12 col-sm-12">
 					<div class="x_panel">
 						<div class="x_title">
 							<h2><?= $title ?></h2>
@@ -20,16 +20,17 @@
 								</div>
 							<?php endif ?>
 
-							<div class="mb-2 mt-2">
+							<div class="mb-4 mt-2">
 								<a href="/admin/inventaris/create" class="btn btn-success">Tambah</a>
 							</div>
 
-							<table class="table table-striped table-bordered">
+							<table id="list-table" class="table table-striped table-bordered dt-responsive nowrap">
 								<thead>
 									<tr>
 										<th>ID</th>
 										<th>No Inventaris</th>
 										<th>Nama</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -38,6 +39,10 @@
 											<td><?= $row['id'] ?></td>
 											<td><?= $row['no_inventaris'] ?></td>
 											<td><?= $row['nama'] ?></td>
+											<td>
+												<a class="btn btn-sm btn-success pull-right" href="/admin/inventaris/<?= $row['id'] ?>">Lihat</a>
+												<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
+											</td>
 										</tr>
 									<?php endforeach; ?>
 								</tbody>
@@ -48,4 +53,21 @@
 			</div>
 		</div>
 	</div>
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+	<script>
+		$('#list-table').DataTable();
+
+		$('.delete-row').click(function() {
+			const res = confirm('Apakah anda yakin akan menghapus ini?')
+			if(res) {
+				const id = $(this).data('id')
+				fetch('/admin/inventaris/delete/' + id, { method: 'DELETE' }).then(() => {
+					window.location.reload();
+				})
+			}
+		})
+	</script>
+
 <?= $this->endSection() ?>

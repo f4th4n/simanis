@@ -22,6 +22,13 @@
 
     <!-- Custom Theme Style -->
     <link href="/lib/build/css/custom.min.css" rel="stylesheet">
+
+    <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link href="/lib/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -39,6 +46,18 @@
     <script src="/lib/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="/lib/vendors/nprogress/nprogress.js"></script>
+    <script src="/lib/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="/lib/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/lib/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="/lib/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/lib/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/lib/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/lib/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/lib/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="/lib/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/lib/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="/lib/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="/lib/build/js/custom.min.js"></script>
@@ -46,9 +65,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.id.min.js" integrity="sha512-zHDWtKP91CHnvBDpPpfLo9UsuMa02/WgXDYcnFp5DFs8lQvhCe2tx56h2l7SqKs/+yQCx4W++hZ/ABg8t3KH/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-		<script>
     	<?= $this->renderSection('js') ?>
-		</script>
 
 		<script>
 			$('.form-date').datepicker({

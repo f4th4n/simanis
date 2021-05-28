@@ -17,15 +17,18 @@
 							<br />
 							<form method="post" class="form-horizontal form-label-left">
 								<?= form_text('nama', 'Nama') ?>
-								<?= form_text('no_seri', 'No Seri') ?>
+								<?= form_text('no-seri', 'No Seri') ?>
 								<?= form_text('merk', 'Merk') ?>
-								<?= form_date('tanggal_didaftarkan', 'Tanggal Didaftarkan') ?>
-								<?= form_number('nilai_kekayaan', 'Nilai Kekayaan') ?>
-								<?= form_text('lokasi_penempatan', 'Lokasi Penempatan') ?>
-								<?= form_text('batas_pakai', 'Batas Pakai') ?>
+								<?= form_date('tanggal-didaftarkan', 'Tanggal Didaftarkan') ?>
+								<?= form_number('nilai-kekayaan', 'Nilai Kekayaan') ?>
+								<?= form_text('lokasi-penempatan', 'Lokasi Penempatan') ?>
+								<?= form_date('batas-pakai', 'Batas Pakai') ?>
 								<?= form_text('keterangan', 'Keterangan') ?>
 
-								<button type="submit" class="btn btn-success pull-right">Simpan</button>
+								<div class="mt-5">
+									<button type="submit" class="btn btn-success pull-right">Simpan</button>
+									<a href="/admin/inventaris" class="btn btn-danger pull-right">Kembali</a>
+								</div>
 							</form>
 						</div>
 					</div>

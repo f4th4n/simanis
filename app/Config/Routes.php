@@ -40,6 +40,8 @@ $routes->get('/admin/inventaris', '\App\Controllers\Admin\Inventaris::index');
 $routes->get('/admin/inventaris/(:num)', '\App\Controllers\Admin\Inventaris::view/$1');
 $routes->get('/admin/inventaris/create', '\App\Controllers\Admin\Inventaris::create');
 $routes->post('/admin/inventaris/create', '\App\Controllers\Admin\Inventaris::save');
+$routes->post('/admin/inventaris/update/(:num)', '\App\Controllers\Admin\Inventaris::save/$1');
+$routes->delete('/admin/inventaris/delete/(:num)', '\App\Controllers\Admin\Inventaris::delete/$1');
 
 /*
  * --------------------------------------------------------------------
