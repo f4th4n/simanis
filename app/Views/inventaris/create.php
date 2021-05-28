@@ -1,6 +1,7 @@
 <?= $this->extend('default') ?>
 
 <?= $this->section('content') ?>
+	<?php $validator = session()->getFlashdata('validator'); ?>
 	<!-- page content -->
 	<div class="right_col" role="main">
 		<div class="">
@@ -12,8 +13,9 @@
 							<div class="clearfix"></div>
 						</div>
 						<div class="x_content">
+							<?= $validator ? $validator->listErrors('alert') : '' ?>
 							<br />
-							<form class="form-horizontal form-label-left">
+							<form method="post" class="form-horizontal form-label-left">
 								<?= form_text('nama', 'Nama') ?>
 								<?= form_text('no_seri', 'No Seri') ?>
 								<?= form_text('merk', 'Merk') ?>
@@ -23,7 +25,7 @@
 								<?= form_text('batas_pakai', 'Batas Pakai') ?>
 								<?= form_text('keterangan', 'Keterangan') ?>
 
-								<button type="button" class="btn btn-success pull-right">Simpan</button>
+								<button type="submit" class="btn btn-success pull-right">Simpan</button>
 							</form>
 						</div>
 					</div>

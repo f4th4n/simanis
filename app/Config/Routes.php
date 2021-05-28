@@ -39,6 +39,7 @@ $routes->post('/admin/login', '\App\Controllers\Admin\Login::login');
 $routes->get('/admin/inventaris', '\App\Controllers\Admin\Inventaris::index');
 $routes->get('/admin/inventaris/(:num)', '\App\Controllers\Admin\Inventaris::view/$1');
 $routes->get('/admin/inventaris/create', '\App\Controllers\Admin\Inventaris::create');
+$routes->post('/admin/inventaris/create', '\App\Controllers\Admin\Inventaris::save');
 
 /*
  * --------------------------------------------------------------------
