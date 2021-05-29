@@ -48,7 +48,8 @@ class Inventaris extends BaseController {
 		$inventaris_model = new InventarisModel();
 
 		$is_new = $id === null;
-		$redirect_to = $is_new ? '/admin/inventaris' : '/admin/inventaris/' . $id;
+		$failed_redirect_to = $is_new ? '/admin/inventaris/create' : '/admin/inventaris/' . $id;
+		$succed_redirect_to = $is_new ? '/admin/inventaris' : '/admin/inventaris/' . $id;
 
 		$validation_rule = [
       'nama' => 'required|min_length[3]|max_length[512]',
@@ -67,7 +68,7 @@ class Inventaris extends BaseController {
 
 		if(!$this->validate($validation_rule)) {	
 			session()->setFlashdata('validator', $this->validator);
-			return redirect()->to($redirect_to);
+			return redirect()->to($failed_redirect_to);
 		}
 
 		$data = InventarisModel::rto($this->request, $is_new);
@@ -75,6 +76,6 @@ class Inventaris extends BaseController {
 
 		$msg = $is_new ? 'Berhasil membuat inventaris baru' : 'Berhasil menyimpan inventaris';
 		session()->setFlashdata('msg', ['msg' => $msg, 'type' => 'success']);
-		return redirect()->to($redirect_to);
+		return redirect()->to($succed_redirect_to);
 	}
 }

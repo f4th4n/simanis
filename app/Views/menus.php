@@ -1,3 +1,6 @@
+<?php
+$role_id = session()->get('role_id');
+?>
 <div class="col-md-3 left_col">
 	<div class="left_col scroll-view">
 		<div class="navbar nav_title" style="border: 0;">
@@ -24,7 +27,9 @@
 			<div class="menu_section">
 				<ul class="nav side-menu">
 					<li <?= strpos(current_url(), '/admin/beranda') ? 'class="current-page"' : '' ?>><a href="/admin/beranda"><i class="fa fa-home"></i> Beranda</a></li>
-					<li <?= strpos(current_url(), '/admin/admin') ? 'class="current-page"' : '' ?>><a href="/admin/admin"><i class="fa fa-users"></i> Admin</a></li>
+					<?php if($role_id === 'admin'): ?>
+						<li <?= strpos(current_url(), '/admin/admin') ? 'class="current-page"' : '' ?>><a href="/admin/admin"><i class="fa fa-users"></i> Admin</a></li>
+					<?php endif ?>
 					<li <?= strpos(current_url(), '/admin/inventaris') ? 'class="current-page"' : '' ?>><a href="/admin/inventaris"><i class="fa fa-laptop"></i> Inventaris</a></li>
 				</ul>
 			</div>

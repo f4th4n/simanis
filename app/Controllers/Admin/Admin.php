@@ -24,7 +24,7 @@ class Admin extends BaseController {
 
 		$data = [
 			'title' => 'Data Admin',
-			'row_admin' => UserModel::dto($row_admin),
+			'row' => UserModel::dto($row_admin),
 		];
 
 		return view('admin/view', $data);
@@ -48,12 +48,22 @@ class Admin extends BaseController {
 		$admin_model = new UserModel();
 
 		$is_new = $id === null;
-		$redirect_to = $is_new ? '/admin/admin' : '/admin/admin/' . $id;
+		$failed_redirect_to = $is_new ? '/admin/admin/create' : '/admin/admin/' . $id;
+		$succed_redirect_to = $is_new ? '/admin/admin' : '/admin/admin/' . $id;
 
 		$validation_rule = [
       'nama' => 'required|min_length[3]|max_length[512]',
-			'no-seri' => 'required',
+      'role_id' => 'required|in_list[admin,pemimpin,pengecek]',
 		];
+
+		if(!$is_new) {
+			$validation_rule['username'] = 'required|is_unique[users.username,id,' . $id . ']';
+		}
+
+		// change password
+		if($this->request->getPost('password')) {
+			$validation_rule['password'] = 'min_length[6]|max_length[64]';
+		}
 
 		if(!$is_new) {
 			$validation_rule['id'] = 'required';
@@ -61,7 +71,7 @@ class Admin extends BaseController {
 
 		if(!$this->validate($validation_rule)) {	
 			session()->setFlashdata('validator', $this->validator);
-			return redirect()->to($redirect_to);
+			return redirect()->to($failed_redirect_to);
 		}
 
 		$data = UserModel::rto($this->request, $is_new);
@@ -69,6 +79,6 @@ class Admin extends BaseController {
 
 		$msg = $is_new ? 'Berhasil membuat admin baru' : 'Berhasil menyimpan admin';
 		session()->setFlashdata('msg', ['msg' => $msg, 'type' => 'success']);
-		return redirect()->to($redirect_to);
+		return redirect()->to($succed_redirect_to);
 	}
 }

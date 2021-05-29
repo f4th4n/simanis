@@ -10,7 +10,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="x_panel">
 						<div class="x_title">
-							<h2><?= $title ?></h2>
+							<h2><?= $title ?> <?= $row['role_id'] ?></h2>
 							<div class="clearfix"></div>
 						</div>
 						<div class="x_content">
@@ -22,21 +22,29 @@
 							<?php endif ?>
 							<?= $validator ? $validator->listErrors('alert') : '' ?>
 							<br />
-							<form action="/admin/inventaris/update/<?= $row_inventaris['id'] ?>" method="post" class="form-horizontal form-label-left">
-								<input type="hidden" name="id" value="<?= $row_inventaris['id'] ?>">
-								<?= form_text('no-inventaris', 'No Inventaris', $row_inventaris['no_inventaris'], 'readonly="readonly"') ?>
-								<?= form_text('nama', 'Nama', $row_inventaris['nama']) ?>
-								<?= form_text('no-seri', 'No Seri', $row_inventaris['no_seri']) ?>
-								<?= form_text('merk', 'Merk', $row_inventaris['merk']) ?>
-								<?= form_date('tanggal-didaftarkan', 'Tanggal Didaftarkan', $row_inventaris['tanggal_didaftarkan']) ?>
-								<?= form_number('nilai-kekayaan', 'Nilai Kekayaan', $row_inventaris['nilai_kekayaan']) ?>
-								<?= form_text('lokasi-penempatan', 'Lokasi Penempatan', $row_inventaris['lokasi_penempatan']) ?>
-								<?= form_text('batas-pakai', 'Batas Pakai', $row_inventaris['batas_pakai']) ?>
-								<?= form_text('keterangan', 'Keterangan', $row_inventaris['keterangan']) ?>
+							<form action="/admin/admin/update/<?= $row['id'] ?>" method="post" class="form-horizontal form-label-left" autocomplete="off">
+								<input autocomplete="off" name="hidden" type="text" style="display:none;">
+								<input type="hidden" name="id" value="<?= $row['id'] ?>">
+								<?= form_text('username', 'Username', $row['username']) ?>
+								<?= form_password('password', 'Password', '', '', 'Kosongkan jika tidak mengganti password') ?>
+								<?= form_text('nama', 'Nama', $row['nama']) ?>
+
+								<div class="form-group row">
+									<label class="control-label col-md-3 col-sm-3 col-xs-3">Role</label>
+									<div class="col-md-9 col-sm-9 col-xs-9">
+										<select name="role_id" class="form-control">
+											<?php foreach(config('Simanis')->roles as $role): ?>
+												<option value="<?= $role['value'] ?>" <?= $row['role_id'] == $role['value'] ? 'selected="selected"' : '' ?>><?= $role['name'] ?></option>
+											<?php endforeach ?>
+										</select>
+									</div>
+								</div>
+
+								<?= form_text('keterangan', 'Keterangan', $row['keterangan']) ?>
 
 								<div class="mt-5">
 									<button type="submit" class="btn btn-success pull-right">Simpan</button>
-									<a href="/admin/inventaris" class="btn btn-danger pull-right">Kembali</a>
+									<a href="/admin/admin" class="btn btn-danger pull-right">Kembali</a>
 								</div>
 							</form>
 						</div>

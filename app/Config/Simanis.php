@@ -18,10 +18,10 @@ class Simanis extends BaseConfig {
 			'name' => 'Pemimpin',
 			'value' => 'pemimpin'
 		],
-		'bag_pengecekan' => [
+		'pengecek' => [
 			'id' => 3,
 			'name' => 'Bag. Pengecekan',
-			'value' => 'bag_pengecekan'
+			'value' => 'pengecek'
 		]
 	];
 }
