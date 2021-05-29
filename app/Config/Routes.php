@@ -35,6 +35,10 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/admin/login', '\App\Controllers\Admin\Login::view');
 $routes->post('/admin/login', '\App\Controllers\Admin\Login::login');
+$routes->get('/admin/logout', '\App\Controllers\Admin\Logout::logout');
+
+// home
+$routes->get('/admin/beranda', '\App\Controllers\Admin\Home::index');
 
 $routes->get('/admin/inventaris', '\App\Controllers\Admin\Inventaris::index');
 $routes->get('/admin/inventaris/(:num)', '\App\Controllers\Admin\Inventaris::view/$1');
@@ -42,6 +46,13 @@ $routes->get('/admin/inventaris/create', '\App\Controllers\Admin\Inventaris::cre
 $routes->post('/admin/inventaris/create', '\App\Controllers\Admin\Inventaris::save');
 $routes->post('/admin/inventaris/update/(:num)', '\App\Controllers\Admin\Inventaris::save/$1');
 $routes->delete('/admin/inventaris/delete/(:num)', '\App\Controllers\Admin\Inventaris::delete/$1');
+
+$routes->get('/admin/admin', '\App\Controllers\Admin\Admin::index');
+$routes->get('/admin/admin/(:num)', '\App\Controllers\Admin\Admin::view/$1');
+$routes->get('/admin/admin/create', '\App\Controllers\Admin\Admin::create');
+$routes->post('/admin/admin/create', '\App\Controllers\Admin\Admin::save');
+$routes->post('/admin/admin/update/(:num)', '\App\Controllers\Admin\Admin::save/$1');
+$routes->delete('/admin/admin/delete/(:num)', '\App\Controllers\Admin\Admin::delete/$1');
 
 /*
  * --------------------------------------------------------------------

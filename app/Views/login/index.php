@@ -1,3 +1,4 @@
+<?php $flash = session()->getFlashdata('msg'); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,6 +30,12 @@
 
       <div class="login_wrapper">
         <div class="animate form login_form">
+							<?php if($flash): ?>
+								<div class="alert alert-<?= $flash['type'] ?> alert-dismissible " role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+									<?= $flash['msg'] ?>
+								</div>
+							<?php endif ?>
           <section class="login_content">
             <form action="/admin/login" method="post">
               <h1>Login Admin</h1>
@@ -38,7 +45,7 @@
               </div>
               <div>
     						<label for="password">Passsword</label>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input name="password" type="password" class="form-control" placeholder="Password" required="" />
               </div>
               <div>
                 <button class="btn btn-primary submit">Log in</button>

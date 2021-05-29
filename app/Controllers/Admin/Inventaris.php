@@ -71,14 +71,7 @@ class Inventaris extends BaseController {
 		}
 
 		$data = InventarisModel::rto($this->request, $is_new);
-
-		if($is_new) {
-			$inventaris_model->save($data);
-		} else {
-			$row_inventaris = $inventaris_model->find($id);
-			$row_inventaris = array_merge($row_inventaris, $data);
-			$inventaris_model->save($data);
-		}
+		$inventaris_model->save($data);
 
 		$msg = $is_new ? 'Berhasil membuat inventaris baru' : 'Berhasil menyimpan inventaris';
 		session()->setFlashdata('msg', ['msg' => $msg, 'type' => 'success']);
