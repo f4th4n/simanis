@@ -18,10 +18,10 @@ class InventarisSeeder extends Seeder {
 				'nama' => $faker->company,
 				'no_seri' => $faker->firstName,
 				'merk' => $faker->firstName,
-				'tanggal_didaftarkan' => $faker->dateTimeBetween('-2 month', '-1 days')->format('d-m-Y'),
+				'tanggal_didaftarkan' => $faker->dateTimeBetween('-2 month', '-1 days')->format('Y-m-d H:i:s'),
 				'nilai_kekayaan' => $faker->numberBetween(1000, 9000000),
 				'lokasi_penempatan' => $faker->firstName,
-				'batas_pakai' => $faker->dateTimeBetween('-2 month', '-1 days')->format('d-m-Y'),
+				'batas_pakai' => $faker->dateTimeBetween('-2 month', '-1 days')->format('Y-m-d H:i:s'),
 				'keterangan' => $faker->firstName,
 			];
 

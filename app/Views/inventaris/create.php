@@ -16,6 +16,7 @@
 							<?= $validator ? $validator->listErrors('alert') : '' ?>
 							<br />
 							<form method="post" class="form-horizontal form-label-left">
+								<?= form_text('no-inventaris', 'No Inventaris', no_inventaris($count_inventaris), 'readonly="readonly"') ?>
 								<?= form_text('nama', 'Nama') ?>
 								<?= form_text('no-seri', 'No Seri') ?>
 								<?= form_text('merk', 'Merk') ?>

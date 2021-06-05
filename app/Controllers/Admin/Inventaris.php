@@ -31,8 +31,11 @@ class Inventaris extends BaseController {
 	}
 
 	public function create() {
+		$inventaris_model = new InventarisModel();
+
 		$data = [
 			'title' => 'Tambah Inventaris',
+			'count_inventaris' => $inventaris_model->countAll() + 1
 		];
 		return view('inventaris/create', $data);
 	}

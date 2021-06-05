@@ -24,7 +24,7 @@ class UserSeeder extends Seeder {
 			'username' => 'bagpengecekan1',
 			'nama' => 'Bag. Pengecekan Satu',
 			'password' => password_hash('bagpengecekan1', PASSWORD_DEFAULT),
-			'role_id' => config('Simanis')->roles['bag_pengecekan']['id']
+			'role_id' => config('Simanis')->roles['pengecek']['id']
 		];
 
 		$this->db->table('users')->replace($admin);

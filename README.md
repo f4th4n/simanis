@@ -7,6 +7,8 @@
 ```
 php spark migrate
 php spark db:seed UserSeeder
+
+php spark db:seed InventarisSeeder
 ```
 
 ## Default Users

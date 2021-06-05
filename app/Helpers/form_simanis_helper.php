@@ -49,3 +49,7 @@ function form_date($column_name, $text, $value = '') {
     </div>
 	<?php
 }
+
+function no_inventaris($val) {
+	return str_pad($val, 5, '0', STR_PAD_LEFT);
+}

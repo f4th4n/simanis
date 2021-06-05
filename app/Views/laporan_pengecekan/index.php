@@ -20,29 +20,27 @@
 								</div>
 							<?php endif ?>
 
-							<div class="mb-4 mt-2">
-								<a href="/admin/inventaris/create" class="btn btn-success">Tambah</a>
-							</div>
-
 							<table id="list-table" class="table table-striped table-bordered dt-responsive nowrap">
 								<thead>
 									<tr>
-										<th>ID</th>
-										<th>No Inventaris</th>
-										<th>Nama</th>
-										<th>Kondisi</th>
-										<th>Action</th>
+										<th>NO</th>
+										<th>Tgl Laporan</th>
+										<th>No Laporan</th>
+										<th>Nama Pengecek</th>
+										<th>Jumlah Data Diperiksa</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($rows_inventaris as $row): ?>
+									<?php foreach ($rows_laporan_pengecekan as $key => $row): ?>
 										<tr>
-											<td><?= $row['id'] ?></td>
-											<td><?= no_inventaris($row['no_inventaris']) ?></td>
-											<td><?= $row['nama'] ?></td>
-											<td>TODO kondisi</td>
+											<td><?= $key + 1 ?></td>
+											<td><?= $row['tanggal_pengecekan'] ?></td>
+											<td><?= $row['no_pengajuan'] ?></td>
+											<td><?= $row['user_name'] ?></td>
+											<td>TODO Jumlah Data</td>
 											<td>
-												<a class="btn btn-sm btn-success pull-right" href="/admin/inventaris/<?= $row['id'] ?>">Lihat</a>
+												<a class="btn btn-sm btn-success pull-right" href="/admin/laporan-pengecekan/<?= $row['id'] ?>">Lihat</a>
 												<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
 											</td>
 										</tr>
@@ -65,7 +63,7 @@
 			const res = confirm('Apakah anda yakin akan menghapus ini?')
 			if(res) {
 				const id = $(this).data('id')
-				fetch('/admin/inventaris/delete/' + id, { method: 'DELETE' }).then(() => {
+				fetch('/admin/laporan-pengecekan/delete/' + id, { method: 'DELETE' }).then(() => {
 					window.location.reload();
 				})
 			}

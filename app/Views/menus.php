@@ -28,9 +28,16 @@ $role_id = session()->get('role_id');
 				<ul class="nav side-menu">
 					<li <?= strpos(current_url(), '/admin/beranda') ? 'class="current-page"' : '' ?>><a href="/admin/beranda"><i class="fa fa-home"></i> Beranda</a></li>
 					<?php if($role_id === 'admin'): ?>
-						<li <?= strpos(current_url(), '/admin/admin') ? 'class="current-page"' : '' ?>><a href="/admin/admin"><i class="fa fa-users"></i> Admin</a></li>
+						<li <?= strpos(current_url(), '/admin/admin') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/admin"><i class="fa fa-users"></i> Admin</a>
+						</li>
+						<li <?= strpos(current_url(), '/admin/inventaris') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/inventaris"><i class="fa fa-laptop"></i> Inventaris</a>
+						</li>
+						<li <?= strpos(current_url(), '/admin/laporan-pengecekan') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/laporan-pengecekan"><i class="fa fa-file"></i> Laporan Pengecekan</a>
+						</li>
 					<?php endif ?>
-					<li <?= strpos(current_url(), '/admin/inventaris') ? 'class="current-page"' : '' ?>><a href="/admin/inventaris"><i class="fa fa-laptop"></i> Inventaris</a></li>
 				</ul>
 			</div>
 

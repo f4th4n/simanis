@@ -47,6 +47,14 @@ $routes->post('/admin/inventaris/create', '\App\Controllers\Admin\Inventaris::sa
 $routes->post('/admin/inventaris/update/(:num)', '\App\Controllers\Admin\Inventaris::save/$1');
 $routes->delete('/admin/inventaris/delete/(:num)', '\App\Controllers\Admin\Inventaris::delete/$1');
 
+$routes->get('/admin/laporan-pengecekan', '\App\Controllers\Admin\LaporanPengecekan::index');
+$routes->get('/admin/laporan-pengecekan/(:num)', '\App\Controllers\Admin\LaporanPengecekan::view/$1');
+$routes->get('/admin/laporan-pengecekan/create', '\App\Controllers\Admin\LaporanPengecekan::create');
+$routes->post('/admin/laporan-pengecekan/create', '\App\Controllers\Admin\LaporanPengecekan::save');
+$routes->post('/admin/laporan-pengecekan/update/(:num)', '\App\Controllers\Admin\LaporanPengecekan::save/$1');
+$routes->delete('/admin/laporan-pengecekan/delete/(:num)', '\App\Controllers\Admin\LaporanPengecekan::delete/$1');
+
+
 $routes->get('/admin/admin', '\App\Controllers\Admin\Admin::index');
 $routes->get('/admin/admin/(:num)', '\App\Controllers\Admin\Admin::view/$1');
 $routes->get('/admin/admin/create', '\App\Controllers\Admin\Admin::create');

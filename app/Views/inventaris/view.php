@@ -24,7 +24,7 @@
 							<br />
 							<form action="/admin/inventaris/update/<?= $row_inventaris['id'] ?>" method="post" class="form-horizontal form-label-left">
 								<input type="hidden" name="id" value="<?= $row_inventaris['id'] ?>">
-								<?= form_text('no-inventaris', 'No Inventaris', $row_inventaris['no_inventaris'], 'readonly="readonly"') ?>
+								<?= form_text('no-inventaris', 'No Inventaris', no_inventaris($row_inventaris['no_inventaris']), 'readonly="readonly"') ?>
 								<?= form_text('nama', 'Nama', $row_inventaris['nama']) ?>
 								<?= form_text('no-seri', 'No Seri', $row_inventaris['no_seri']) ?>
 								<?= form_text('merk', 'Merk', $row_inventaris['merk']) ?>
