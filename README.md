@@ -9,6 +9,8 @@ php spark migrate
 php spark db:seed UserSeeder
 
 php spark db:seed InventarisSeeder
+php spark db:seed LaporanPengecekanSeeder
+php spark db:seed PerawatanSeeder
 ```
 
 ## Default Users

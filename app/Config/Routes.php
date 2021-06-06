@@ -61,6 +61,12 @@ $routes->post('/admin/perawatan/create', '\App\Controllers\Admin\Perawatan::save
 $routes->post('/admin/perawatan/update/(:num)', '\App\Controllers\Admin\Perawatan::save/$1');
 $routes->delete('/admin/perawatan/delete/(:num)', '\App\Controllers\Admin\Perawatan::delete/$1');
 
+$routes->get('/admin/mutasi', '\App\Controllers\Admin\Mutasi::index');
+$routes->get('/admin/mutasi/(:num)', '\App\Controllers\Admin\Mutasi::view/$1');
+$routes->get('/admin/mutasi/create', '\App\Controllers\Admin\Mutasi::create');
+$routes->post('/admin/mutasi/create', '\App\Controllers\Admin\Mutasi::save');
+$routes->post('/admin/mutasi/update/(:num)', '\App\Controllers\Admin\Mutasi::save/$1');
+$routes->delete('/admin/mutasi/delete/(:num)', '\App\Controllers\Admin\Mutasi::delete/$1');
 
 $routes->get('/admin/admin', '\App\Controllers\Admin\Admin::index');
 $routes->get('/admin/admin/(:num)', '\App\Controllers\Admin\Admin::view/$1');
@@ -68,6 +74,14 @@ $routes->get('/admin/admin/create', '\App\Controllers\Admin\Admin::create');
 $routes->post('/admin/admin/create', '\App\Controllers\Admin\Admin::save');
 $routes->post('/admin/admin/update/(:num)', '\App\Controllers\Admin\Admin::save/$1');
 $routes->delete('/admin/admin/delete/(:num)', '\App\Controllers\Admin\Admin::delete/$1');
+
+// Pengecek
+$routes->get('/admin/pengecek/laporan-pengecekan', '\App\Controllers\Pengecek\LaporanPengecekan::index');
+$routes->get('/admin/pengecek/laporan-pengecekan/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::view/$1');
+$routes->get('/admin/pengecek/laporan-pengecekan/create', '\App\Controllers\Pengecek\LaporanPengecekan::create');
+$routes->post('/admin/pengecek/laporan-pengecekan/create', '\App\Controllers\Pengecek\LaporanPengecekan::save');
+$routes->post('/admin/pengecek/laporan-pengecekan/update/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::save/$1');
+$routes->delete('/admin/pengecek/laporan-pengecekan/delete/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::delete/$1');
 
 /*
  * --------------------------------------------------------------------

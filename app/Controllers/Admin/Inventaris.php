@@ -15,7 +15,7 @@ class Inventaris extends BaseController {
 			'rows_inventaris' => $rows_inventaris,
 		];
 
-		return view('inventaris/index', $data);
+		return view('admin/inventaris/index', $data);
 	}
 
 	public function view($id) {
@@ -27,7 +27,7 @@ class Inventaris extends BaseController {
 			'row_inventaris' => InventarisModel::dto($row_inventaris),
 		];
 
-		return view('inventaris/view', $data);
+		return view('admin/inventaris/view', $data);
 	}
 
 	public function create() {
@@ -37,7 +37,7 @@ class Inventaris extends BaseController {
 			'title' => 'Tambah Inventaris',
 			'count_inventaris' => $inventaris_model->countAll() + 1
 		];
-		return view('inventaris/create', $data);
+		return view('admin/inventaris/create', $data);
 	}
 
 	public function delete($id) {

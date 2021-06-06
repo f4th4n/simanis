@@ -9,6 +9,6 @@ class Home extends BaseController {
 		$data = [
 			'title' => 'Beranda'
 		];
-		return view('home/index', $data);
+		return view('admin/home/index', $data);
 	}
 }

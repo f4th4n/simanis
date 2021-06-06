@@ -18,7 +18,7 @@ class Perawatan extends BaseController {
 			'rows_perawatan' => $rows_perawatan_dto,
 		];
 
-		return view('perawatan/index', $data);
+		return view('admin/perawatan/index', $data);
 	}
 
 	public function view($id) {
@@ -30,7 +30,7 @@ class Perawatan extends BaseController {
 			'row_perawatan' => PerawatanModel::dto($row_perawatan),
 		];
 
-		return view('perawatan/view', $data);
+		return view('admin/perawatan/view', $data);
 	}
 
 	public function delete($id) {

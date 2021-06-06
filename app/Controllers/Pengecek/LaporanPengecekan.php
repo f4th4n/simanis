@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Pengecek;
 
 use App\Controllers\BaseController;
 use App\Models\LaporanPengecekanModel;
@@ -18,7 +18,7 @@ class LaporanPengecekan extends BaseController {
 			'rows_laporan_pengecekan' => $rows_laporan_pengecekan_dto,
 		];
 
-		return view('admin/laporan_pengecekan/index', $data);
+		return view('pengecek/laporan_pengecekan/index', $data);
 	}
 
 	public function view($id) {
@@ -30,7 +30,7 @@ class LaporanPengecekan extends BaseController {
 			'row_laporan_pengecekan' => LaporanPengecekanModel::dto($row_laporan_pengecekan),
 		];
 
-		return view('admin/laporan_pengecekan/view', $data);
+		return view('pengecek/laporan_pengecekan/view', $data);
 	}
 
 	public function delete($id) {

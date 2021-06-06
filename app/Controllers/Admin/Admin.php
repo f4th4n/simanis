@@ -15,7 +15,7 @@ class Admin extends BaseController {
 			'rows_admin' => $rows_admin,
 		];
 
-		return view('admin/index', $data);
+		return view('admin/admin/index', $data);
 	}
 
 	public function view($id) {
@@ -27,14 +27,14 @@ class Admin extends BaseController {
 			'row' => UserModel::dto($row_admin),
 		];
 
-		return view('admin/view', $data);
+		return view('admin/admin/view', $data);
 	}
 
 	public function create() {
 		$data = [
 			'title' => 'Tambah Admin',
 		];
-		return view('admin/create', $data);
+		return view('admin/admin/create', $data);
 	}
 
 	public function delete($id) {
