@@ -54,6 +54,13 @@ $routes->post('/admin/laporan-pengecekan/create', '\App\Controllers\Admin\Lapora
 $routes->post('/admin/laporan-pengecekan/update/(:num)', '\App\Controllers\Admin\LaporanPengecekan::save/$1');
 $routes->delete('/admin/laporan-pengecekan/delete/(:num)', '\App\Controllers\Admin\LaporanPengecekan::delete/$1');
 
+$routes->get('/admin/perawatan', '\App\Controllers\Admin\Perawatan::index');
+$routes->get('/admin/perawatan/(:num)', '\App\Controllers\Admin\Perawatan::view/$1');
+$routes->get('/admin/perawatan/create', '\App\Controllers\Admin\Perawatan::create');
+$routes->post('/admin/perawatan/create', '\App\Controllers\Admin\Perawatan::save');
+$routes->post('/admin/perawatan/update/(:num)', '\App\Controllers\Admin\Perawatan::save/$1');
+$routes->delete('/admin/perawatan/delete/(:num)', '\App\Controllers\Admin\Perawatan::delete/$1');
+
 
 $routes->get('/admin/admin', '\App\Controllers\Admin\Admin::index');
 $routes->get('/admin/admin/(:num)', '\App\Controllers\Admin\Admin::view/$1');

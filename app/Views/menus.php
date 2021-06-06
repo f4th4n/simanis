@@ -37,6 +37,9 @@ $role_id = session()->get('role_id');
 						<li <?= strpos(current_url(), '/admin/laporan-pengecekan') ? 'class="current-page"' : '' ?>>
 							<a href="/admin/laporan-pengecekan"><i class="fa fa-file"></i> Laporan Pengecekan</a>
 						</li>
+						<li <?= strpos(current_url(), '/admin/perawatan') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/perawatan"><i class="fa fa-gear"></i> Data Perawatan</a>
+						</li>
 					<?php endif ?>
 				</ul>
 			</div>
