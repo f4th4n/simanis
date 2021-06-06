@@ -72,6 +72,18 @@
 				format: "dd-mm-yyyy",
 				language: "id"
 			});
+
+            const formatRupiah = function() {
+                const val = $(this).val();
+                const rp = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(val).replace(/\D00(?=\D*$)/, '');
+                $('.helper-rupiah', $(this).parent()).text(rp)
+            }
+
+            $('.wrapper-rupiah input').each(function() {
+                formatRupiah.bind(this).apply()
+            })
+
+            $(document).on("keyup", ".wrapper-rupiah input", formatRupiah)
 		</script>
 	</body>
 </html>

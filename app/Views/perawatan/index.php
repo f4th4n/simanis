@@ -24,10 +24,10 @@
 								<thead>
 									<tr>
 										<th>NO</th>
-										<th>Tgl Laporan</th>
-										<th>No Laporan</th>
-										<th>Nama Pengecek</th>
-										<th>Jumlah Data Diperiksa</th>
+										<th>Id Inventaris</th>
+										<th>Nama Inventaris</th>
+										<th>Kondisi</th>
+										<th>Keterangan</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -35,10 +35,10 @@
 									<?php foreach ($rows_perawatan as $key => $row): ?>
 										<tr>
 											<td><?= $key + 1 ?></td>
-											<td><?= $row['tanggal_pengecekan'] ?></td>
-											<td><?= $row['no_pengajuan'] ?></td>
-											<td><?= $row['user_name'] ?></td>
-											<td>TODO Jumlah Data</td>
+											<td><?= no_inventaris($row['inventaris_id']) ?></td>
+											<td><?= $row['inventaris']['nama'] ?></td>
+											<td>TODO kondisi</td>
+											<td><?= $row['keterangan'] ?></td>
 											<td>
 												<a class="btn btn-sm btn-success pull-right" href="/admin/perawatan/<?= $row['id'] ?>">Lihat</a>
 												<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
