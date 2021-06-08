@@ -13,15 +13,15 @@ class Simanis extends BaseConfig {
 			'name' => 'Admin',
 			'value' => 'admin'
 		],
-		'pemimpin' => [
+		'pengecek' => [
 			'id' => 2,
+			'name' => 'Bag. Pengecekan',
+			'value' => 'pengecek'
+		],
+		'pemimpin' => [
+			'id' => 3,
 			'name' => 'Pemimpin',
 			'value' => 'pemimpin'
 		],
-		'pengecek' => [
-			'id' => 3,
-			'name' => 'Bag. Pengecekan',
-			'value' => 'pengecek'
-		]
 	];
 }
