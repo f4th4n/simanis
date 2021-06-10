@@ -33,10 +33,26 @@ class LaporanPengecekan extends BaseController {
 		return view('pengecek/laporan_pengecekan/view', $data);
 	}
 
+	public function create() {
+		$laporan_pengecekan_model = new LaporanPengecekanModel();
+
+		$data = [
+			'title' => 'Isi Form Buat Laporan',
+			'current_index' => $laporan_pengecekan_model->countAll() + 1,
+			'user_id' => session()->get('id')
+		];
+		return view('pengecek/laporan_pengecekan/create', $data);
+	}
+
 	public function delete($id) {
 		if(!$id) return;
 
 		$laporan_pengecekan_model = new LaporanPengecekanModel();
 		$laporan_pengecekan_model->delete($id);
+	}
+
+	public function start() {
+		echo 'f';
+		return ['ok'];
 	}
 }

@@ -54,5 +54,18 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
+		$curr_class = get_class($this);
+		if ($curr_class === 'App\Controllers\Admin\Login' || $curr_class === 'App\Controllers\Admin\Logout') {
+			return;
+		}
+
+		if (!session()->get('id')) {
+			?>
+				<script>
+					window.location.href = '/admin/logout';
+				</script>
+			<?php
+			die();
+		}
 	}
 }

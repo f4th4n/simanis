@@ -79,7 +79,7 @@ $routes->delete('/admin/admin/delete/(:num)', '\App\Controllers\Admin\Admin::del
 $routes->get('/admin/pengecek/laporan-pengecekan', '\App\Controllers\Pengecek\LaporanPengecekan::index');
 $routes->get('/admin/pengecek/laporan-pengecekan/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::view/$1');
 $routes->get('/admin/pengecek/laporan-pengecekan/create', '\App\Controllers\Pengecek\LaporanPengecekan::create');
-$routes->post('/admin/pengecek/laporan-pengecekan/create', '\App\Controllers\Pengecek\LaporanPengecekan::save');
+$routes->post('/admin/pengecek/laporan-pengecekan/create', '\App\Controllers\Pengecek\LaporanPengecekan::start');
 $routes->post('/admin/pengecek/laporan-pengecekan/update/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::save/$1');
 $routes->delete('/admin/pengecek/laporan-pengecekan/delete/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::delete/$1');
 

@@ -20,6 +20,10 @@
 								</div>
 							<?php endif ?>
 
+							<div class="mb-4 mt-2">
+								<a href="/admin/pengecek/laporan-pengecekan/create" class="btn btn-success">Buat Laporan Pengecekan</a>
+							</div>
+
 							<table id="list-table" class="table table-striped table-bordered dt-responsive nowrap">
 								<thead>
 									<tr>
