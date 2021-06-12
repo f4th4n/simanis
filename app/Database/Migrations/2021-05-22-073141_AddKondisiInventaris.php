@@ -28,8 +28,15 @@ class AddKondisiInventaris extends Migration
 			'informasi' => [
 				'type' => 'TEXT',
 			],
-			'tanggal_pengecekan' => [
-				'type' => 'TIMESTAMP',
+			'laporan_pengecekan_id' => [
+				'type' => 'INT',
+				'constraint' => 5,
+				'unsigned' => true,
+			],
+			'user_id' => [
+				'type' => 'INT',
+				'constraint' => 5,
+				'unsigned' => true,
 			],
 		]);
 

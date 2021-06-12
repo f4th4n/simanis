@@ -4,12 +4,13 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\LaporanPengecekanModel;
+use App\Models\KondisiInventarisModel;
 
 class LaporanPengecekan extends BaseController {
 	public function index() {
 		$laporan_pengecekan_model = new LaporanPengecekanModel();
 		$rows_laporan_pengecekan = $laporan_pengecekan_model->findAll();
-		$rows_laporan_pengecekan_dto = array_map(function($row) {
+		$rows_laporan_pengecekan_dto = array_map(function ($row) {
 			return LaporanPengecekanModel::dto($row);
 		}, $rows_laporan_pengecekan);
 
@@ -34,7 +35,9 @@ class LaporanPengecekan extends BaseController {
 	}
 
 	public function delete($id) {
-		if(!$id) return;
+		if (!$id) {
+			return;
+		}
 
 		$laporan_pengecekan_model = new LaporanPengecekanModel();
 		$laporan_pengecekan_model->delete($id);

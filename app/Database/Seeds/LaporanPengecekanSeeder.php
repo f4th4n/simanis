@@ -14,11 +14,11 @@ class LaporanPengecekanSeeder extends Seeder {
 		$user_model = new UserModel();
 		$faker = Factory::create('id_ID');
 
-		for($i = 0; $i < 10; $i++) {
+		for($i = 0; $i < 3; $i++) {
 			$data = [
 				'no_pengajuan' => $model->countAll() + 1,
 				'user_id' => $user_model->first()['id'],
-				'tanggal_pengecekan' => $faker->dateTimeBetween('-2 month', '-1 days')->format('Y-m-d H:i:s')
+				'tanggal_pengecekan' => $faker->dateTimeBetween('-2 month', '-1 days')->format('Y-m-d') . ' 00:00:00'
 			];
 
 			$this->db->table('laporan_pengecekan')->insert($data);

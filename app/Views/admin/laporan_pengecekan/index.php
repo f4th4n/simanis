@@ -38,9 +38,9 @@
 											<td><?= $row['tanggal_pengecekan'] ?></td>
 											<td><?= $row['no_pengajuan'] ?></td>
 											<td><?= $row['user_name'] ?></td>
-											<td>TODO Jumlah Data</td>
+											<td><?= $row['jumlah_data'] ?></td>
 											<td>
-												<a class="btn btn-sm btn-success pull-right" href="/admin/laporan-pengecekan/<?= $row['id'] ?>">Lihat</a>
+												<a class="btn btn-sm btn-success pull-right" href="/admin/pengecek/laporan-pengecekan/fill/<?= $row['tanggal_pengecekan'] ?>">Lihat</a>
 												<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
 											</td>
 										</tr>
