@@ -16,8 +16,17 @@
 							<?= $validator ? $validator->listErrors('alert') : '' ?>
 
 							<?php if (session()->get('role_id') === 'pengecek'): ?>
-								<div class="mb-4 mt-2">
-									<a href="/todo" class="btn btn-success pull-right">Scan</a>
+								<div class="row">
+									<div class="col-md-12 col-sm-12">
+										<div class="mb-4 mt-2">
+											<a href="/todo" class="btn btn-success pull-right">Scan</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 col-sm-12">
+									<p class="pull-right">Total Pengecekan <b><?= count($rows) ?></b> dari <b><?= $count_all ?></b> inventaris</p>
+									</div>
 								</div>
 							<?php endif; ?>
 

@@ -5,6 +5,7 @@ namespace App\Controllers\Pengecek;
 use App\Controllers\BaseController;
 use App\Models\LaporanPengecekanModel;
 use App\Models\KondisiInventarisModel;
+use App\Models\InventarisModel;
 
 class LaporanPengecekan extends BaseController {
 	public function index() {
@@ -60,6 +61,7 @@ class LaporanPengecekan extends BaseController {
 	}
 
 	public function fill($tanggal) {
+		$inventaris_model = new InventarisModel();
 		$kondisi_inventaris_model = new KondisiInventarisModel();
 		$laporan_pengecekan_model = new LaporanPengecekanModel();
 
@@ -75,6 +77,7 @@ class LaporanPengecekan extends BaseController {
 		$data = [
 			'title' => 'Pengecekan',
 			'rows' => $rows_dto,
+			'count_all' => $inventaris_model->countAll(),
 		];
 		return view('pengecek/laporan_pengecekan/fill', $data);
 	}

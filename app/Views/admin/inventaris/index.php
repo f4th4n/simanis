@@ -38,7 +38,7 @@
 									<?php foreach ($rows_inventaris as $row): ?>
 										<tr>
 											<td><?= $row['id'] ?></td>
-											<td><?= no_inventaris($row['no_inventaris']) ?></td>
+											<td><?= inventaris_id_text($row['id']) ?></td>
 											<td><?= $row['nama'] ?></td>
 											<td>TODO kondisi</td>
 											<td>
