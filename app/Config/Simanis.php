@@ -24,4 +24,8 @@ class Simanis extends BaseConfig {
 			'value' => 'pemimpin'
 		],
 	];
+
+	public $kondisi = [
+		'baik', 'kurang_baik', 'rusak'
+	];
 }

@@ -76,6 +76,8 @@ $routes->post('/admin/admin/update/(:num)', '\App\Controllers\Admin\Admin::save/
 $routes->delete('/admin/admin/delete/(:num)', '\App\Controllers\Admin\Admin::delete/$1');
 
 // Pengecek
+$routes->get('/admin/pengecek/laporan-pengecekan/inventaris/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::getInventaris/$1');
+
 $routes->get('/admin/pengecek/laporan-pengecekan', '\App\Controllers\Pengecek\LaporanPengecekan::index');
 $routes->get('/admin/pengecek/laporan-pengecekan/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::view/$1');
 $routes->get('/admin/pengecek/laporan-pengecekan/create', '\App\Controllers\Pengecek\LaporanPengecekan::create');

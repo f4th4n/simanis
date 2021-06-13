@@ -29,16 +29,6 @@
 							<?php if (session()->get('role_id') === 'pengecek'): ?>
 								<div class="row">
 									<div class="col-md-12 col-sm-12">
-
-
-
-								<?= form_text('no-inventaris', 'No Inventaris', inventaris_id_text(10), 'readonly="readonly"') ?>
-
-
-
-
-
-
 										<div class="mb-4 mt-2">
 											<button class="btn btn-success pull-right" data-toggle="modal" data-target="#scan-modal">Scan</button>
 										</div>
@@ -125,15 +115,47 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<form method="post" class="form-horizontal">
-								<?= form_text('no-inventaris', 'No Inventaris', inventaris_id_text(10), 'readonly="readonly"') ?>
+								<?= form_text('no-inventaris', 'No Inventaris', '', 'readonly="readonly"') ?>
+								<?= form_text('nama', 'Nama', '', 'readonly="readonly"') ?>
+								<?= form_text('no-seri', 'No Seri', '', 'readonly="readonly"') ?>
+								<?= form_text('merk', 'Merk', '', 'readonly="readonly"') ?>
+								<?= form_text('warna', 'Warna', '', 'readonly="readonly"') ?>
+								<?= form_date('tanggal-didaftarkan', 'Tanggal Didaftarkan', '', 'readonly="readonly"') ?>
+								<?= form_number('nilai-kekayaan', 'Nilai Kekayaan', '', 'readonly="readonly"') ?>
+								<?= form_text('lokasi-penempatan', 'Lokasi Penempatan', '', 'readonly="readonly"') ?>
+								<?= form_text('batas-pakai', 'Batas Pakai', '', 'readonly="readonly"') ?>
+								<?= form_text('keterangan', 'Keterangan', '', 'readonly="readonly"') ?>
+								
+								<div class="form-group row align-items-end">
+									<label class="control-label col-md-3 col-sm-3 col-xs-3">Kondisi</label>
+									<?php foreach(config('Simanis')->kondisi as $val): ?>
+										<div class="col-md-3 col-sm-12">
+											<div class="radio">
+												<label>
+													<input type="radio" class="flat" checked name="iCheck"> <?= kondisi_text($val) ?>
+												</label>
+											</div>
+										</div>
+									<?php endforeach ?>
+								</div>
+
+								<div class="form-group row">
+									<label class="control-label col-md-3 col-sm-3 col-xs-3">Informasi</label>
+									<div class="col-md-9 col-sm-9 col-xs-9">
+										<textarea class="form-control"></textarea>
+									</div>
+								</div>
+
+								<div class="mt-5">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+									<button id="simpan" type="button" class="btn btn-success pull-right">Simpan</button>
+								</div>
+
 							</form>
 						</div>
 					</div>
 				</div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
       </div>
     </div>
   </div>
@@ -143,6 +165,26 @@
 <?= $this->section('js') ?>
 <script>
 
+const requestInventarisData = async (qrMessage) => {
+
+	const res = await fetch('/admin/pengecek/laporan-pengecekan/inventaris/' + qrMessage)
+	const body = await res.json()
+	console.log('body', body)
+	const row = body.row
+	$('[name="no-inventaris"').val(row.inventaris_id_text);
+	$('[name="nama"').val(row.nama);
+	$('[name="no-seri"').val(row.no_seri);
+	$('[name="merk"').val(row.merk);
+	$('[name="warna"').val(row.warna);
+	$('[name="tanggal-didaftarkan"').val(row.tanggal_didaftarkan);
+	$('[name="nilai-kekayaan"').val(row.nilai_kekayaan);
+	$('[name="lokasi-penempatan"').val(row.lokasi_penempatan);
+	$('[name="batas-pakai"').val(row.batas_pakai);
+	$('[name="keterangan"').val(row.keterangan);
+}
+
+requestInventarisData(11)
+
 $('#scan-barang').click(function() {
 	var html5QrcodeScanner
 
@@ -150,7 +192,7 @@ $('#scan-barang').click(function() {
 		// handle the scanned code as you like, for example:
 		console.log(`QR matched = ${qrMessage}`);
 		html5QrcodeScanner.clear();
-		$('[name="no-inventaris"]').val(qrMessage)
+		requestInventarisData(qrMessage);
 	}
 
 	function onScanFailure(error) {
@@ -170,6 +212,10 @@ $('#scan-barang').click(function() {
 $('#scan-cara-lain').click(function() {
 	$('#scan-method').hide()
 	$('#scan-option').show()
+})
+
+$('#simpan').click(function() {
+	console.log('simpan ... ')
 })
 
 </script>

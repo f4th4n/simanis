@@ -15,6 +15,8 @@
     <link href="/lib/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="/lib/vendors/nprogress/nprogress.css" rel="stylesheet">
+		<!-- iCheck -->
+		<link href="/lib/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="/lib/vendors/animate.css/animate.min.css" rel="stylesheet">
 
@@ -46,6 +48,8 @@
     <!-- FastClick -->
     <script src="/lib/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
+		<!-- iCheck -->
+		<script src="/lib/vendors/iCheck/icheck.min.js"></script>
     <script src="/lib/vendors/nprogress/nprogress.js"></script>
     <script src="/lib/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -86,6 +90,19 @@
             })
 
             $(document).on("keyup", ".wrapper-rupiah input", formatRupiah)
+
+// iCheck
+$(document).ready(function () {
+    if ($("input.flat")[0]) {
+        $(document).ready(function () {
+            $('input.flat').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            });
+        });
+    }
+});
+// /iCheck
 		</script>
 	</body>
 </html>

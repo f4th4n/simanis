@@ -20,6 +20,7 @@
 								<?= form_text('nama', 'Nama') ?>
 								<?= form_text('no-seri', 'No Seri') ?>
 								<?= form_text('merk', 'Merk') ?>
+								<?= form_text('warna', 'Warna') ?>
 								<?= form_date('tanggal-didaftarkan', 'Tanggal Didaftarkan') ?>
 								<?= form_number('nilai-kekayaan', 'Nilai Kekayaan') ?>
 								<?= form_text('lokasi-penempatan', 'Lokasi Penempatan') ?>

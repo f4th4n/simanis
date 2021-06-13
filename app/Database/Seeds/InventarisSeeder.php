@@ -18,6 +18,7 @@ class InventarisSeeder extends Seeder {
 				'nama' => $faker->company,
 				'no_seri' => $faker->firstName,
 				'merk' => $faker->firstName,
+				'warna' => $faker->firstName,
 				'tanggal_didaftarkan' => $faker->dateTimeBetween('-2 month', '-1 days')->format('Y-m-d H:i:s'),
 				'nilai_kekayaan' => $faker->numberBetween(1000, 9000000),
 				'lokasi_penempatan' => $faker->firstName,

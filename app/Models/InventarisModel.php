@@ -13,6 +13,7 @@ class InventarisModel extends Model {
 		'nama',
 		'no_seri',
 		'merk',
+		'warna',
 		'tanggal_didaftarkan',
 		'nilai_kekayaan',
 		'lokasi_penempatan',
@@ -32,6 +33,7 @@ class InventarisModel extends Model {
 		$rto = [
 			'nama' => $request->getPost('nama'),
 			'no_seri' => $request->getPost('no-seri'),
+			'warna' => $request->getPost('warna'),
 			'merk' => $request->getPost('merk'),
 			'tanggal_didaftarkan' => date_create_from_format('d-m-Y', $request->getPost('tanggal-didaftarkan'))->format('Y-m-d 0:0:0'),
 			'nilai_kekayaan' => $request->getPost('nilai-kekayaan'),
@@ -44,7 +46,7 @@ class InventarisModel extends Model {
 			$rto['no_inventaris'] = $model->countAll() + 1;
 		} else {
 			$rto['id'] = $request->getPost('id');
-			$rto['no_inventaris'] = $request->getPost('no-inventaris');
+			$rto['no_inventaris'] = $request->getPost('id');
 		}
 
 		return $rto;

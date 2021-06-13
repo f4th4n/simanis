@@ -40,12 +40,12 @@ function form_number($column_name, $text, $value = '', $attr = '', $help = '') {
 	<?php
 }
 
-function form_date($column_name, $text, $value = '') {
+function form_date($column_name, $text, $value = '', $attr = '') {
 	?>
 		<div class="form-group row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-3"><?= $text ?></label>
       <div class="col-md-9 col-sm-9 col-xs-9">
-				<input name="<?= $column_name ?>" type="text" class="form-date form-control" value="<?= $value ?>">
+			<input name="<?= $column_name ?>" type="text" class="form-date form-control" value="<?= $value ?>" <?= $attr ?>>
         <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
       </div>
     </div>
@@ -61,7 +61,11 @@ function perawatan_id_text($val) {
 }
 
 function kondisi_text($kondisi_key) {
-	if($kondisi_key === 'baik') return 'Baik';
-	elseif($kondisi_key === 'kurang_baik') return 'Kurang Baik';
-	elseif($kondisi_key === 'rusak') return 'Rusak';
+	if ($kondisi_key === 'baik') {
+		return 'Baik';
+	} elseif ($kondisi_key === 'kurang_baik') {
+		return 'Kurang Baik';
+	} elseif ($kondisi_key === 'rusak') {
+		return 'Rusak';
+	}
 }

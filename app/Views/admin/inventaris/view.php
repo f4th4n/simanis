@@ -28,6 +28,7 @@
 								<?= form_text('nama', 'Nama', $row_inventaris['nama']) ?>
 								<?= form_text('no-seri', 'No Seri', $row_inventaris['no_seri']) ?>
 								<?= form_text('merk', 'Merk', $row_inventaris['merk']) ?>
+								<?= form_text('warna', 'Warna', $row_inventaris['warna']) ?>
 								<?= form_date('tanggal-didaftarkan', 'Tanggal Didaftarkan', $row_inventaris['tanggal_didaftarkan']) ?>
 								<?= form_number('nilai-kekayaan', 'Nilai Kekayaan', $row_inventaris['nilai_kekayaan']) ?>
 								<?= form_text('lokasi-penempatan', 'Lokasi Penempatan', $row_inventaris['lokasi_penempatan']) ?>

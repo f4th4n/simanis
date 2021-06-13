@@ -81,4 +81,16 @@ class LaporanPengecekan extends BaseController {
 		];
 		return view('pengecek/laporan_pengecekan/fill', $data);
 	}
+
+	public function getInventaris($id) {
+		$inventaris_model = new InventarisModel();
+		$row = $inventaris_model->find($id);
+		$row = InventarisModel::dto($row);
+		$row['inventaris_id_text'] = inventaris_id_text($row['id']);
+
+		$data = [
+			'row' => $row
+		];
+		return $this->response->setJSON($data);
+	}
 }
