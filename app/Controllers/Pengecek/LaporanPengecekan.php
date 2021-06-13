@@ -78,6 +78,7 @@ class LaporanPengecekan extends BaseController {
 			'title' => 'Pengecekan',
 			'rows' => $rows_dto,
 			'count_all' => $inventaris_model->countAll(),
+			'tanggal' => $tanggal,
 		];
 		return view('pengecek/laporan_pengecekan/fill', $data);
 	}
@@ -86,10 +87,55 @@ class LaporanPengecekan extends BaseController {
 		$inventaris_model = new InventarisModel();
 		$row = $inventaris_model->find($id);
 		$row = InventarisModel::dto($row);
+		if (!$row) {
+			$data = [
+				'success' => false,
+				'row' => null,
+			];
+			return $this->response->setJSON($data);
+		}
 		$row['inventaris_id_text'] = inventaris_id_text($row['id']);
 
 		$data = [
-			'row' => $row
+			'success' => true,
+			'row' => $row,
+		];
+		return $this->response->setJSON($data);
+	}
+
+	public function updateKondisi() {
+		$inventaris_id = $this->request->getVar('inventaris_id');
+		$tanggal = $this->request->getVar('tanggal');
+		$informasi = $this->request->getVar('informasi');
+		$kondisi = $this->request->getVar('kondisi');
+
+		$laporan_pengecekan_model = new LaporanPengecekanModel();
+		$kondisi_inventaris_model = new KondisiInventarisModel();
+
+		$date = date_create_from_format('d-m-Y', $tanggal);
+		$row_laporan_pengecekan = LaporanPengecekanModel::find_by_date($date);
+		if (!$row_laporan_pengecekan) {
+			$data = LaporanPengecekanModel::rto($this->request, $date);
+			$laporan_pengecekan_model->save($data);
+		}
+
+		$row_laporan_pengecekan = LaporanPengecekanModel::find_by_date($date);
+		$where = ['inventaris_id' => $inventaris_id, 'laporan_pengecekan_id' => $row_laporan_pengecekan['id']];
+		$row_kondisi_inventaris = $kondisi_inventaris_model->where($where)->first();
+
+		$laporan_pengecekan_id = $row_laporan_pengecekan['id'];
+		$user_id = session()->get('id');
+		KondisiInventarisModel::upsert_kondisi_inventaris(
+			$row_kondisi_inventaris,
+			$inventaris_id,
+			$kondisi,
+			$informasi,
+			$laporan_pengecekan_id,
+			$user_id
+		);
+
+		$data = [
+			'success' => true,
 		];
 		return $this->response->setJSON($data);
 	}

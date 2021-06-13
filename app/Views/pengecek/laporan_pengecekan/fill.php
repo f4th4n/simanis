@@ -111,7 +111,6 @@
 				</div>
 
 				<div id="scan-result">
-
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<form method="post" class="form-horizontal">
@@ -128,21 +127,23 @@
 								
 								<div class="form-group row align-items-end">
 									<label class="control-label col-md-3 col-sm-3 col-xs-3">Kondisi</label>
-									<?php foreach(config('Simanis')->kondisi as $val): ?>
+									<?php foreach (config('Simanis')->kondisi as $val): ?>
 										<div class="col-md-3 col-sm-12">
 											<div class="radio">
 												<label>
-													<input type="radio" class="flat" checked name="iCheck"> <?= kondisi_text($val) ?>
+													<input name="kondisi" value="<?= $val ?>" type="radio" class="flat" <?= $val === 'baik'
+	? 'checked="checked"'
+	: '' ?>> <?= kondisi_text($val) ?>
 												</label>
 											</div>
 										</div>
-									<?php endforeach ?>
+									<?php endforeach; ?>
 								</div>
 
 								<div class="form-group row">
 									<label class="control-label col-md-3 col-sm-3 col-xs-3">Informasi</label>
 									<div class="col-md-9 col-sm-9 col-xs-9">
-										<textarea class="form-control"></textarea>
+										<textarea id="informasi" class="form-control"></textarea>
 									</div>
 								</div>
 
@@ -165,11 +166,15 @@
 <?= $this->section('js') ?>
 <script>
 
-const requestInventarisData = async (qrMessage) => {
+const tanggal = <?= json_encode($tanggal) ?>;
+var isReload = false;
+var currentInventarisId = null;
 
+const requestInventarisData = async (qrMessage) => {
 	const res = await fetch('/admin/pengecek/laporan-pengecekan/inventaris/' + qrMessage)
 	const body = await res.json()
-	console.log('body', body)
+	if(!body.success) return alert('Kode inventaris tidak ditemukan, periksa kembali QR code')
+
 	const row = body.row
 	$('[name="no-inventaris"').val(row.inventaris_id_text);
 	$('[name="nama"').val(row.nama);
@@ -181,9 +186,10 @@ const requestInventarisData = async (qrMessage) => {
 	$('[name="lokasi-penempatan"').val(row.lokasi_penempatan);
 	$('[name="batas-pakai"').val(row.batas_pakai);
 	$('[name="keterangan"').val(row.keterangan);
+	currentInventarisId = parseInt(row.id)
 }
 
-requestInventarisData(11)
+requestInventarisData('11')
 
 $('#scan-barang').click(function() {
 	var html5QrcodeScanner
@@ -214,8 +220,42 @@ $('#scan-cara-lain').click(function() {
 	$('#scan-option').show()
 })
 
-$('#simpan').click(function() {
-	console.log('simpan ... ')
+$('#simpan').click(async function() {
+	$('#simpan').attr('disabled', 'disabled')
+	const data = {
+		inventaris_id: currentInventarisId,
+		kondisi: $('[name="kondisi"]:checked').val(),
+		informasi: $('#informasi').val(),
+		tanggal
+	}
+	const rawResponse = await fetch('/admin/pengecek/laporan-pengecekan/update-kondisi', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  const content = await rawResponse.json();
+	$('#simpan').removeAttr('disabled')
+
+	new PNotify({
+		title: 'Berhasil Menyimpan',
+		text: 'Laporan pengecekan berhasil disimpan',
+		type: 'success',
+		styling: 'bootstrap3'
+	});
+
+	isReload = true;
+})
+
+$('#scan-modal').on('hidden.bs.modal', function() {
+	if(isReload) {
+		const confirmRes = confirm('Data telah berubah, klik OK untuk melihat data baru')
+		if(confirmRes) {
+			window.location.reload();
+		}
+	}
 })
 
 </script>

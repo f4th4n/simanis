@@ -52,4 +52,29 @@ class KondisiInventarisModel extends Model {
 
 		return $rto;
 	}
+
+	public static function upsert_kondisi_inventaris(
+		$row_kondisi_inventaris,
+		$inventaris_id,
+		$kondisi,
+		$informasi,
+		$laporan_pengecekan_id,
+		$user_id
+	) {
+		$model = new KondisiInventarisModel();
+
+		$data = [
+			'inventaris_id' => $inventaris_id,
+			'kondisi' => $kondisi,
+			'informasi' => $informasi,
+			'laporan_pengecekan_id' => $laporan_pengecekan_id,
+			'user_id' => $user_id,
+		];
+
+		if (!$row_kondisi_inventaris) {
+			$model->insert($data);
+		} else {
+			$model->update($row_kondisi_inventaris['id'], $data);
+		}
+	}
 }

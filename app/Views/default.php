@@ -31,6 +31,9 @@
     <link href="/lib/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/lib/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/lib/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="/lib/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="/lib/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
    	<?= $this->renderSection('css') ?>
   </head>
 
@@ -63,6 +66,9 @@
     <script src="/lib/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="/lib/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
     <script src="/lib/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="/lib/vendors/pnotify/dist/pnotify.js"></script>
+    <script src="/lib/vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="/lib/vendors/pnotify/dist/pnotify.nonblock.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="/lib/build/js/custom.min.js"></script>

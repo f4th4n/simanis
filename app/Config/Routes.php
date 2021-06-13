@@ -83,6 +83,7 @@ $routes->get('/admin/pengecek/laporan-pengecekan/(:num)', '\App\Controllers\Peng
 $routes->get('/admin/pengecek/laporan-pengecekan/create', '\App\Controllers\Pengecek\LaporanPengecekan::create');
 $routes->post('/admin/pengecek/laporan-pengecekan/create', '\App\Controllers\Pengecek\LaporanPengecekan::start');
 $routes->get('/admin/pengecek/laporan-pengecekan/fill/(:any)', '\App\Controllers\Pengecek\LaporanPengecekan::fill/$1');
+$routes->post('/admin/pengecek/laporan-pengecekan/update-kondisi', '\App\Controllers\Pengecek\LaporanPengecekan::updateKondisi');
 
 $routes->post('/admin/pengecek/laporan-pengecekan/update/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::save/$1');
 $routes->delete('/admin/pengecek/laporan-pengecekan/delete/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::delete/$1');

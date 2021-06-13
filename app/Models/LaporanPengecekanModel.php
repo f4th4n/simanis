@@ -34,18 +34,25 @@ class LaporanPengecekanModel extends Model {
 		]);
 	}
 
-	static public function rto($request, $is_new) {
+	static public function rto($request, $tanggal) {
 		$model = new LaporanPengecekanModel();
 		$rto = [
-			'no_pengajuan' => $request->getPost('no-pengajuan'),
-			'user_id' => $request->getPost('user-id'),
-			'tanggal_pengecekan' => $request->getPost('tanggal-pengecekan'),
+			'no_pengajuan' => $model->countAll() + 1,
+			'user_id' => session()->get('id'),
+			'tanggal_pengecekan' => $tanggal->format('Y-m-d 0:0:0'),
 		];
 
-		if(!$is_new) {
-			$rto['id'] = $request->getPost('id');
-		}
-
 		return $rto;
+	}
+
+	public static function find_by_date($date) {
+		$kondisi_inventaris_model = new KondisiInventarisModel();
+		$laporan_pengecekan_model = new LaporanPengecekanModel();
+
+		$row_laporan_pengecekan = $laporan_pengecekan_model
+			->where('tanggal_pengecekan', $date->format('Y-m-d') . ' 00:00:00')
+			->first();
+
+		return $row_laporan_pengecekan;
 	}
 }
