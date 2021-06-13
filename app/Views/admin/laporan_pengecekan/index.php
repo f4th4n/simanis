@@ -26,6 +26,7 @@
 										<th>NO</th>
 										<th>Tgl Laporan</th>
 										<th>No Laporan</th>
+										<th>ID Pengecek</th>
 										<th>Nama Pengecek</th>
 										<th>Jumlah Data Diperiksa</th>
 										<th></th>
@@ -37,6 +38,7 @@
 											<td><?= $key + 1 ?></td>
 											<td><?= $row['tanggal_pengecekan'] ?></td>
 											<td><?= laporan_pengecekan_id_text($row['no_pengajuan']) ?></td>
+											<td><?= $row['user_id'] ?></td>
 											<td><?= $row['user_name'] ?></td>
 											<td><?= $row['jumlah_data'] ?></td>
 											<td>
