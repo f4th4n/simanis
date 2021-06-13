@@ -35,6 +35,11 @@
     <link href="/lib/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
     <link href="/lib/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
    	<?= $this->renderSection('css') ?>
+		<style>
+			.simanis-link {
+				color: #000088;
+			}
+		</style>
   </head>
 
   <body class="nav-md">

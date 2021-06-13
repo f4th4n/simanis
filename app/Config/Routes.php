@@ -53,6 +53,7 @@ $routes->get('/admin/laporan-pengecekan/create', '\App\Controllers\Admin\Laporan
 $routes->post('/admin/laporan-pengecekan/create', '\App\Controllers\Admin\LaporanPengecekan::save');
 $routes->post('/admin/laporan-pengecekan/update/(:num)', '\App\Controllers\Admin\LaporanPengecekan::save/$1');
 $routes->delete('/admin/laporan-pengecekan/delete/(:num)', '\App\Controllers\Admin\LaporanPengecekan::delete/$1');
+$routes->get('/admin/laporan-pengecekan/kondisi/(:any)', '\App\Controllers\Admin\LaporanPengecekan::kondisiInventaris/$1');
 
 $routes->get('/admin/perawatan', '\App\Controllers\Admin\Perawatan::index');
 $routes->get('/admin/perawatan/(:num)', '\App\Controllers\Admin\Perawatan::view/$1');

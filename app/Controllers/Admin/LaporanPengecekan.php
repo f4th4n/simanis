@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\LaporanPengecekanModel;
 use App\Models\KondisiInventarisModel;
+use App\Models\InventarisModel;
 
 class LaporanPengecekan extends BaseController {
 	public function index() {
@@ -41,5 +42,27 @@ class LaporanPengecekan extends BaseController {
 
 		$laporan_pengecekan_model = new LaporanPengecekanModel();
 		$laporan_pengecekan_model->delete($id);
+	}
+
+	public function kondisiInventaris($laporan_pengecekan_id) {
+		$inventaris_model = new InventarisModel();
+		$kondisi_inventaris_model = new KondisiInventarisModel();
+		$laporan_pengecekan_model = new LaporanPengecekanModel();
+
+		$user_id = session()->get('id');
+
+		$rows = $kondisi_inventaris_model->where('laporan_pengecekan_id', $laporan_pengecekan_id)->find();
+
+		$rows_dto = array_map(function ($row) {
+			return KondisiInventarisModel::dto($row);
+		}, $rows);
+
+		$data = [
+			'title' => 'Pengecekan',
+			'rows' => $rows_dto,
+			'count_all' => $inventaris_model->countAll(),
+			'tanggal' => '-',
+		];
+		return view('pengecek/laporan_pengecekan/fill', $data);
 	}
 }

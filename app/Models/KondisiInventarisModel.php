@@ -13,9 +13,12 @@ class KondisiInventarisModel extends Model {
 	public static function find_by_date($date, $user_id) {
 		$kondisi_inventaris_model = new KondisiInventarisModel();
 		$laporan_pengecekan_model = new LaporanPengecekanModel();
-		$row_laporan_pengecekan = $laporan_pengecekan_model
-			->where('tanggal_pengecekan', $date->format('Y-m-d') . ' 00:00:00')
-			->first();
+
+		$where = [
+			'tanggal_pengecekan' => $date->format('Y-m-d') . ' 00:00:00',
+			'user_id' => session()->get('id'),
+		];
+		$row_laporan_pengecekan = $laporan_pengecekan_model->where($where)->first();
 
 		if (!$row_laporan_pengecekan) {
 			return [];

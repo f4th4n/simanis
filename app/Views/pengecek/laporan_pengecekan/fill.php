@@ -26,6 +26,11 @@
 						<div class="x_content">
 							<?= $validator ? $validator->listErrors('alert') : '' ?>
 
+							<div class="mb-2">
+								<a class="simanis-link" href="/admin/laporan-pengecekan">
+									<span class="fa fa-arrow-left"></span> Kembali</a>
+							</div>
+
 							<?php if (session()->get('role_id') === 'pengecek'): ?>
 								<div class="row">
 									<div class="col-md-12 col-sm-12">
@@ -111,13 +116,13 @@
 					<div id="input-manual-wrapper">	
 						<div class="row">
 							<div class="col-md-12 col-sm-12">
-								<form method="post" class="form-horizontal">
+								<div method="post" class="form-horizontal">
 									<?= form_text('kode-inventaris', 'Kode Inventaris', 'INV-', '', 'Contoh INV-001, INV-7282') ?>
 									<div class="mt-5">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
 										<button id="cari-inventaris" type="button" class="btn btn-success pull-right">Cari</button>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
