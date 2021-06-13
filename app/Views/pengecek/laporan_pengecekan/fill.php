@@ -5,7 +5,7 @@
 		.widget-simanis {
 			cursor: pointer;
 		}
-		#scan-method {
+		#scan-method, #scan-result, #input-manual-wrapper {
 			display: none
 		}
 	</style>
@@ -108,6 +108,19 @@
 						<a id="scan-cara-lain" href="#">< Cara lain</a>
 					</div>
 					<div id="reader" width="600px"></div>
+					<div id="input-manual-wrapper">	
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<form method="post" class="form-horizontal">
+									<?= form_text('kode-inventaris', 'Kode Inventaris', 'INV-', '', 'Contoh INV-001, INV-7282') ?>
+									<div class="mt-5">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+										<button id="cari-inventaris" type="button" class="btn btn-success pull-right">Cari</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<div id="scan-result">
@@ -170,10 +183,12 @@ const tanggal = <?= json_encode($tanggal) ?>;
 var isReload = false;
 var currentInventarisId = null;
 
+var html5QrCode
+
 const requestInventarisData = async (qrMessage) => {
 	const res = await fetch('/admin/pengecek/laporan-pengecekan/inventaris/' + qrMessage)
 	const body = await res.json()
-	if(!body.success) return alert('Kode inventaris tidak ditemukan, periksa kembali QR code')
+	if(!body.success) return false
 
 	const row = body.row
 	$('[name="no-inventaris"').val(row.inventaris_id_text);
@@ -186,19 +201,38 @@ const requestInventarisData = async (qrMessage) => {
 	$('[name="lokasi-penempatan"').val(row.lokasi_penempatan);
 	$('[name="batas-pakai"').val(row.batas_pakai);
 	$('[name="keterangan"').val(row.keterangan);
+
+	$('[name="kondisi"]').iCheck('uncheck').iCheck('update');
+	$('[name="kondisi"]:first').iCheck('check').iCheck('update');
+	$('#informasi').val('');
+
 	currentInventarisId = parseInt(row.id)
+	$('#scan-result').show();
+	return true
 }
 
-requestInventarisData('11')
+const newAlert = (title) => {
+	return 	new PNotify({
+		title,
+		type: 'error',
+		styling: 'bootstrap3'
+	});
+}
 
 $('#scan-barang').click(function() {
-	var html5QrcodeScanner
+	html5QrCode = new Html5Qrcode("reader");
 
-	function onScanSuccess(qrMessage) {
+	async function onScanSuccess(qrMessage) {
 		// handle the scanned code as you like, for example:
 		console.log(`QR matched = ${qrMessage}`);
-		html5QrcodeScanner.clear();
-		requestInventarisData(qrMessage);
+		const inventarisId = parseInt(qrMessage);
+		if(isNaN(inventarisId)) return alert('Kode inventaris tidak ditemukan, periksa kembali QR code')
+
+		const res = await requestInventarisData(inventarisId);
+		if(!res) return alert('Kode inventaris tidak ditemukan, periksa kembali QR code')
+
+		await html5QrCode.stop()
+		await html5QrCode.clear()
 	}
 
 	function onScanFailure(error) {
@@ -210,14 +244,18 @@ $('#scan-barang').click(function() {
 	$('#scan-option').hide()
 	$('#scan-method').show()
 
-	const html5QrCode = new Html5Qrcode("reader");
 	const config = { fps: 10, qrbox: 250 };
 	html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess);
 });
 
-$('#scan-cara-lain').click(function() {
+$('#scan-cara-lain').click(async function() {
 	$('#scan-method').hide()
 	$('#scan-option').show()
+	$('#scan-result').hide()
+	if(html5QrCode) {
+		await html5QrCode.stop()
+		await html5QrCode.clear()
+	}
 })
 
 $('#simpan').click(async function() {
@@ -246,6 +284,8 @@ $('#simpan').click(async function() {
 		styling: 'bootstrap3'
 	});
 
+	$('#scan-cara-lain').click();	
+
 	isReload = true;
 })
 
@@ -256,6 +296,23 @@ $('#scan-modal').on('hidden.bs.modal', function() {
 			window.location.reload();
 		}
 	}
+})
+
+$('#cari-manual').click(function() {
+	$('#scan-option').hide()
+	$('#scan-method').show()
+	$('#input-manual-wrapper').show();
+})
+
+$('#cari-inventaris').click(async function() {
+	const input = $('[name="kode-inventaris"]').val()
+	const inputId = input.replace('INV-', '')
+	const inventarisId = parseInt(inputId, 10)
+	const res = await requestInventarisData(inventarisId);
+	if(!res) return alert('Kode inventaris tidak ditemukan, periksa kembali QR code')
+
+	$('#scan-result').show();
+	$('#input-manual-wrapper').hide();
 })
 
 </script>
