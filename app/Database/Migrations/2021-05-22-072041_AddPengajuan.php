@@ -26,7 +26,7 @@ class AddPengajuan extends Migration
 				'unsigned' => true,
 			],
 			'tanggal_pengajuan' => [
-				'type' => 'TIMESTAMP',
+				'type' => 'TIMESTAMP', 'null' => true,
 			],
 			'nama_inventaris' => [
 				'type' => 'INT',

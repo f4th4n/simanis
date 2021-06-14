@@ -32,10 +32,10 @@ class AddPerawatan extends Migration
 				'unsigned' => true,
 			],
 			'tanggal_perawatan' => [
-				'type' => 'TIMESTAMP',
+				'type' => 'TIMESTAMP', 'null' => true,
 			],
 			'tanggal_selesai' => [
-				'type' => 'TIMESTAMP',
+				'type' => 'TIMESTAMP', 'null' => true,
 			],
 			'tempat_perawatan' => [
 				'type' => 'VARCHAR',

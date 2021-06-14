@@ -21,7 +21,7 @@ class AddSuratPerintah extends Migration
 				'unsigned' => true,
 			],
 			'tanggal_terbit' => [
-				'type' => 'TIMESTAMP',
+				'type' => 'TIMESTAMP', 'null' => true,
 			],
 			'to_user' => [
 				'type' => 'INT',
@@ -32,7 +32,7 @@ class AddSuratPerintah extends Migration
 				'type' => 'TEXT',
 			],
 			'tanggal_pelaksanaan' => [
-				'type' => 'TIMESTAMP',
+				'type' => 'TIMESTAMP', 'null' => true,
 			]
 		]);
 

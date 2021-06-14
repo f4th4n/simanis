@@ -35,7 +35,7 @@ class AddInventaris extends Migration {
 				'constraint' => 256,
 			],
 			'tanggal_didaftarkan' => [
-				'type' => 'TIMESTAMP',
+				'type' => 'TIMESTAMP', 'null' => true,
 			],
 			'nilai_kekayaan' => [
 				'type' => 'INT',
@@ -47,7 +47,7 @@ class AddInventaris extends Migration {
 				'constraint' => 256,
 			],
 			'batas_pakai' => [
-				'type' => 'TIMESTAMP',
+				'type' => 'TIMESTAMP', 'null' => true,
 			],
 			'keterangan' => [
 				'type' => 'TEXT',

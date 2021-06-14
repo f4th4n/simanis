@@ -26,7 +26,7 @@ class AddLaporanPengecekan extends Migration
 				'unsigned' => true,
 			],
 			'tanggal_pengecekan' => [
-				'type' => 'TIMESTAMP',
+				'type' => 'TIMESTAMP', 'null' => true,
 			],
 		]);
 
