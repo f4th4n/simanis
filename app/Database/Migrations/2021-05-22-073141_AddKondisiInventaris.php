@@ -41,7 +41,6 @@ class AddKondisiInventaris extends Migration
 		]);
 
 		$this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('inventaris_id', 'inventaris', 'id');
 		$this->forge->createTable('kondisi_inventaris');
 	}
 

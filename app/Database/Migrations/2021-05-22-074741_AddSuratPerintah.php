@@ -37,7 +37,6 @@ class AddSuratPerintah extends Migration
 		]);
 
 		$this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('to_user', 'users', 'id');
 		$this->forge->createTable('surat_perintah');
 	}
 

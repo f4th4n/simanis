@@ -56,8 +56,6 @@ class AddPerawatan extends Migration
 		]);
 
 		$this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('user_id', 'users', 'id');
-		$this->forge->addForeignKey('inventaris_id', 'inventaris', 'id');
 		$this->forge->createTable('perawatan');
 	}
 
