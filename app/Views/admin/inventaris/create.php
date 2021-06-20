@@ -26,6 +26,7 @@
 								<?= form_text('lokasi-penempatan', 'Lokasi Penempatan') ?>
 								<?= form_date('batas-pakai', 'Batas Pakai') ?>
 								<?= form_text('keterangan', 'Keterangan') ?>
+								<?= form_text('pesan', 'Pesan Jatuh Tempo', 'habis pajak', '', 'Pesan saat mendekati jatuh tempo') ?>
 
 								<div class="mt-5">
 									<button type="submit" class="btn btn-success pull-right">Simpan</button>

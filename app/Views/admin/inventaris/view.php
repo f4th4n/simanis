@@ -3,6 +3,8 @@
 <?= $this->section('content') ?>
 	<?php $flash = session()->getFlashdata('msg'); ?>
 	<?php $validator = session()->getFlashdata('validator'); ?>
+	<?php $update_batas_pakai_mode = isset($_GET['update-batas-pakai']); ?>
+
 	<!-- page content -->
 	<div class="right_col" role="main">
 		<div class="">
@@ -31,7 +33,6 @@
 										<input name="foto" type="file" value="">
 									</div>
 								</div>
-
 								<?= form_text('no-inventaris', 'No Inventaris', inventaris_id_text($row_inventaris['id']), 'readonly="readonly"') ?>
 								<?= form_text('nama', 'Nama', $row_inventaris['nama']) ?>
 								<?= form_text('no-seri', 'No Seri', $row_inventaris['no_seri']) ?>
@@ -40,8 +41,9 @@
 								<?= form_date('tanggal-didaftarkan', 'Tanggal Didaftarkan', $row_inventaris['tanggal_didaftarkan']) ?>
 								<?= form_number('nilai-kekayaan', 'Nilai Kekayaan', $row_inventaris['nilai_kekayaan'], '', 'rupiah') ?>
 								<?= form_text('lokasi-penempatan', 'Lokasi Penempatan', $row_inventaris['lokasi_penempatan']) ?>
-								<?= form_text('batas-pakai', 'Batas Pakai', $row_inventaris['batas_pakai']) ?>
+								<?= form_date('batas-pakai', 'Batas Pakai', $row_inventaris['batas_pakai']) ?>
 								<?= form_text('keterangan', 'Keterangan', $row_inventaris['keterangan']) ?>
+								<?= form_text('pesan', 'Pesan Jatuh Tempo', $row_inventaris['pesan'] ?: 'habis pajak', 'Pesan saat mendekati jatuh tempo') ?>
 
 								<div class="mt-5">
 									<button type="submit" class="btn btn-success pull-right">Simpan</button>
@@ -61,7 +63,9 @@
 							<div class="row">
 								<div class="col-md-6 col-sm-12 mb-5">
 									<?php if($row_inventaris['foto']): ?>
-										<img src="<?= '/static/uploads/' . $row_inventaris['foto'] ?>" class="img-thumbnail" />
+										<a href="<?= '/static/uploads/' . $row_inventaris['foto'] ?>" target="_BLANK">
+											<img src="<?= '/static/uploads/' . $row_inventaris['foto'] ?>" class="img-thumbnail" />
+										</a>
 									<?php endif ?>
 								</div>
 								<div class="col-md-6 col-sm-12 mb-5">

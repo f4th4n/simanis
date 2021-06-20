@@ -78,11 +78,11 @@ class Inventaris extends BaseController {
 
 		$data = InventarisModel::rto($this->request, $is_new);
 
-		try {
-			// file upload handler
-			$foto_path = $this->request->getFile('foto')->store();
+		// file upload handler
+		$file_foto = $this->request->getFile('foto');
+		if ($file_foto->isValid()) {
+			$foto_path = $file_foto->store();
 			$data['foto'] = $foto_path;
-		} catch (\Exception $e) {
 		}
 
 		$inventaris_model->save($data);
