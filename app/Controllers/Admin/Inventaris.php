@@ -35,13 +35,15 @@ class Inventaris extends BaseController {
 
 		$data = [
 			'title' => 'Tambah Inventaris',
-			'count_inventaris' => $inventaris_model->countAll() + 1
+			'count_inventaris' => $inventaris_model->countAll() + 1,
 		];
 		return view('admin/inventaris/create', $data);
 	}
 
 	public function delete($id) {
-		if(!$id) return;
+		if (!$id) {
+			return;
+		}
 
 		$inventaris_model = new InventarisModel();
 		$inventaris_model->delete($id);
@@ -55,7 +57,7 @@ class Inventaris extends BaseController {
 		$succed_redirect_to = $is_new ? '/admin/inventaris' : '/admin/inventaris/' . $id;
 
 		$validation_rule = [
-      'nama' => 'required|min_length[3]|max_length[512]',
+			'nama' => 'required|min_length[3]|max_length[512]',
 			'no-seri' => 'required',
 			'merk' => 'required',
 			'tanggal-didaftarkan' => 'required',
@@ -65,16 +67,24 @@ class Inventaris extends BaseController {
 			'keterangan' => 'required',
 		];
 
-		if(!$is_new) {
+		if (!$is_new) {
 			$validation_rule['id'] = 'required';
 		}
 
-		if(!$this->validate($validation_rule)) {	
+		if (!$this->validate($validation_rule)) {
 			session()->setFlashdata('validator', $this->validator);
 			return redirect()->to($failed_redirect_to);
 		}
 
 		$data = InventarisModel::rto($this->request, $is_new);
+
+		try {
+			// file upload handler
+			$foto_path = $this->request->getFile('foto')->store();
+			$data['foto'] = $foto_path;
+		} catch (\Exception $e) {
+		}
+
 		$inventaris_model->save($data);
 
 		$msg = $is_new ? 'Berhasil membuat inventaris baru' : 'Berhasil menyimpan inventaris';

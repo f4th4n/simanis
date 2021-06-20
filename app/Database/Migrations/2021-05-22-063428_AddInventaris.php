@@ -55,6 +55,9 @@ class AddInventaris extends Migration {
 			'pesan' => [
 				'type' => 'TEXT',
 			],
+			'foto' => [
+				'type' => 'TEXT',
+			],
 		]);
 
 		$this->forge->addPrimaryKey('id');

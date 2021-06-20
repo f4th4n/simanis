@@ -19,6 +19,7 @@ class InventarisModel extends Model {
 		'lokasi_penempatan',
 		'batas_pakai',
 		'keterangan',
+		'foto',
 	];
 
 	static public function dto($row) {

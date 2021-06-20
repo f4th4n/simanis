@@ -50,6 +50,7 @@
 			</div>
 		</div>
 
+		<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="/lib/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="/lib/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
