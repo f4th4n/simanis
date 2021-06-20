@@ -61,9 +61,12 @@ class InventarisModel extends Model {
 
 	public static function get_where_batas_pakai_almost_over() {
 		$day = 4;
-		$sql = '
+		$sql =
+			'
 			SELECT * FROM `inventaris` 
-			WHERE `batas_pakai` > (curdate() - interval '.$day.' day)
+			WHERE `batas_pakai` > (curdate() - interval ' .
+			$day .
+			' day)
 			ORDER BY `batas_pakai`
 		';
 
@@ -71,7 +74,7 @@ class InventarisModel extends Model {
 		$rows = $db->query($sql);
 		$rows = $rows->getResult();
 
-		foreach($rows as $row) {
+		foreach ($rows as $row) {
 			$test = date_create_from_format('Y-m-d H:i:s', $row->batas_pakai);
 			$today = new \DateTime();
 			$today->setTime(23, 59, 59);
@@ -79,5 +82,13 @@ class InventarisModel extends Model {
 		}
 
 		return $rows;
+	}
+
+	public static function total_kekayaan() {
+		$db = db_connect();
+		$sql = 'SELECT SUM(nilai_kekayaan) AS total FROM `inventaris`';
+
+		$row = $db->query($sql)->getRow();
+		return $row->total;
 	}
 }

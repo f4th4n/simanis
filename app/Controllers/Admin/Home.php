@@ -11,7 +11,11 @@ class Home extends BaseController {
 		$rows = InventarisModel::get_where_batas_pakai_almost_over();
 
 		$summary = [
-			'total_inventaris' => $inventaris_model->countAll()
+			'total_inventaris' => $inventaris_model->countAll(),
+			'kondisi_baik' => '-',
+			'kondisi_kurang_baik' => '-',
+			'kondisi_rusak' => '-',
+			'total_kekayaan' => number_format_short(InventarisModel::total_kekayaan())
 		];
 
 		$data = [

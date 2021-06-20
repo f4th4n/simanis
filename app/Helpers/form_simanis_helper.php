@@ -73,3 +73,18 @@ function kondisi_text($kondisi_key) {
 		return 'Rusak';
 	}
 }
+
+function number_format_short($n) {
+	if ($n < 1000000) {
+		// Anything less than a million
+		$n_format = number_format($n, 0, ',', '.');
+	} elseif ($n < 1000000000) {
+		// Anything less than a billion
+		$n_format = number_format($n / 1000000, 0, ',', '.') . ' Juta';
+	} else {
+		// At least a billion
+		$n_format = number_format($n / 1000000000, 0, ',', '.') . ' Miliar';
+	}
+
+	return $n_format;
+}
