@@ -18,7 +18,12 @@ class MutasiModel extends Model {
 	];
 
 	static public function dto($row) {
+		$inventaris_model = new InventarisModel();
+		$inventaris = $inventaris_model->find($row['inventaris_id']);
+
 		return array_merge($row, [
+			'tanggal_mutasi' => date_create_from_format('Y-m-d H:i:s', $row['tanggal_mutasi'])->format('d-m-Y'),
+			'inventaris' => $inventaris
 		]);
 	}
 
@@ -31,6 +36,8 @@ class MutasiModel extends Model {
 			'lokasi_tujuan' => $request->getPost('lokasi-tujuan'),
 			'keterangan' => $request->getPost('keterangan'),
 		];
+
+		$rto['inventaris_id'] = (int) str_replace('INV-', '', $rto['inventaris_id']);
 
 		if($is_new) {
 			$rto['no_mutasi'] = $model->countAll() + 1;
