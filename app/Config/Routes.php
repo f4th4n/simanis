@@ -58,11 +58,14 @@ $routes->delete('/admin/laporan-pengecekan/delete/(:num)', '\App\Controllers\Adm
 $routes->get('/admin/laporan-pengecekan/kondisi/(:any)', '\App\Controllers\Admin\LaporanPengecekan::kondisiInventaris/$1');
 
 $routes->get('/admin/perawatan', '\App\Controllers\Admin\Perawatan::index');
-$routes->get('/admin/perawatan/(:num)', '\App\Controllers\Admin\Perawatan::view/$1');
+$routes->get('/admin/perawatan/(:num)', '\App\Controllers\Admin\Perawatan::viewDafarPerawatan/$1');
+$routes->get('/admin/perawatan/tindakan-perawatan', '\App\Controllers\Admin\Perawatan::tindakanPerawatan');
+$routes->get('/admin/perawatan/tindakan-perawatan/(:num)', '\App\Controllers\Admin\Perawatan::viewTindakanPerawatan/$1');
 $routes->get('/admin/perawatan/create', '\App\Controllers\Admin\Perawatan::create');
 $routes->post('/admin/perawatan/create', '\App\Controllers\Admin\Perawatan::save');
 $routes->post('/admin/perawatan/update/(:num)', '\App\Controllers\Admin\Perawatan::save/$1');
 $routes->delete('/admin/perawatan/delete/(:num)', '\App\Controllers\Admin\Perawatan::delete/$1');
+$routes->post('/admin/perawatan/create-from-kondisi-inventaris/(:num)', '\App\Controllers\Admin\Perawatan::createFromKondisiInventaris/$1');
 
 $routes->get('/admin/mutasi', '\App\Controllers\Admin\Mutasi::index');
 $routes->get('/admin/mutasi/(:num)', '\App\Controllers\Admin\Mutasi::view/$1');

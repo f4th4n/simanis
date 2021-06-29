@@ -35,26 +35,36 @@
 								<?= form_text('no-inventaris', 'No Inventaris', inventaris_id_text($row_kondisi_inventaris['inventaris_id']), 'readonly="readonly"') ?>
 								<?= form_text('nama-inventaris', 'Nama Inventaris', $row_kondisi_inventaris['inventaris']['nama'], 'readonly="readonly"') ?>
 
-								<?= form_date('tanggal-perawatan', 'Tanggal Perawatan', '', '') ?>
-								<?= form_date('tanggal-selesai', 'Tanggal Selesai', '', '') ?>
-								<?= form_text('tempat-perawatan', 'Tempat Perawatan', '', '') ?>
-								<?= form_number('biaya-perawatan', 'Biaya Perawatan', '', '', 'rupiah') ?>
-
-								<div class="form-group row">
-									<label class="control-label col-md-3 col-sm-3 col-xs-3">Foto Kwitansi</label>
-									<div class="col-md-9 col-sm-9 col-xs-9">
-										<input name="foto" type="file" value="">
-									</div>
-								</div>
-
-								<?= form_text('keterangan', 'Keterangan', $row_perawatan ? $row_perawatan['keterangan'] : '') ?>
+								<?= form_date('tanggal-perawatan', 'Tanggal Perawatan', $row_perawatan ? $row_perawatan['tanggal_perawatan'] : '', 'readonly="readonly"') ?>
+								<?= form_date('tanggal-selesai', 'Tanggal Selesai', $row_perawatan ? $row_perawatan['tanggal_selesai'] : '', 'readonly="readonly"') ?>
+								<?= form_text('tempat-perawatan', 'Tempat Perawatan', $row_perawatan ? $row_perawatan['tempat_perawatan'] : '', 'readonly="readonly"') ?>
+								<?= form_number('biaya-perawatan', 'Biaya Perawatan', $row_perawatan ? $row_perawatan['biaya_perawatan'] : '', 'readonly="readonly"', 'rupiah') ?>
+								<?= form_text('keterangan', 'Keterangan', $row_perawatan ? $row_perawatan['keterangan'] : '', 'readonly="readonly"') ?>
 
 
 								<div class="mt-5">
-									<button type="submit" class="btn btn-success pull-right">Simpan</button>
-									<a href="/admin/perawatan" class="btn btn-danger pull-right">Kembali</a>
+									<a href="/admin/perawatan/tindakan-perawatan" class="btn btn-danger pull-right">Kembali</a>
 								</div>
 							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<h2>Foto Kwitansi</h2>
+							<div class="clearfix"></div>
+						</div>
+						<div class="x_content">
+							<div class="row">
+								<div class="col-md-6 col-sm-12 mb-5">
+									<?php if($row_perawatan['foto_kwitansi']): ?>
+										<a href="<?= '/static/uploads/' . $row_perawatan['foto_kwitansi'] ?>" target="_BLANK">
+											<img src="<?= '/static/uploads/' . $row_perawatan['foto_kwitansi'] ?>" class="img-thumbnail" />
+										</a>
+									<?php endif ?>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

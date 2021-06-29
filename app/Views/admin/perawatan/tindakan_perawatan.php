@@ -22,15 +22,15 @@
 
 						<ul class="nav nav-tabs" role="tablist">
 							<li class="nav-item">
-								<a id="tab-selector-1" class="nav-link active" data-toggle="tab" href="#daftar-perawatan" role="tab">Daftar Perawatan</a>
+								<a id="tab-selector-1" class="nav-link" href="/admin/perawatan" role="tab">Daftar Perawatan</a>
 							</li>
 							<li class="nav-item">
-								<a id="tab-selector-2" class="nav-link" href="/admin/perawatan/tindakan-perawatan" role="tab">Tindakan Perawatan</a>
+								<a id="tab-selector-2" class="nav-link active" role="tab">Tindakan Perawatan</a>
 							</li>
 						</ul>
 
 						<div class="tab-content" role="tablist">
-							<div class="tab-pane active" id="daftar-perawatan" role="tabpanel">
+							<div class="tab-pane active" id="tindakan-perawatan" role="tabpanel">
 								<br />
 								<br />
 
@@ -48,15 +48,16 @@
 												</tr>
 											</thead>
 											<tbody>
-												<?php foreach ($rows_daftar_perawatan as $key => $row): ?>
+												<?php foreach ($rows_perawatan as $key => $row): ?>
 													<tr>
 														<td><?= $key + 1 ?></td>
 														<td><?= inventaris_id_text($row['inventaris_id']) ?></td>
 														<td><?= $row['inventaris']['nama'] ?></td>
-														<td><?= kondisi_text($row['kondisi']) ?></td>
-														<td><?= $row['informasi'] ?></td>
+														<td><?= kondisi_text($row['kondisi_inventaris']['kondisi']) ?></td>
+														<td><?= $row['keterangan'] ?></td>
 														<td>
-															<a class="btn btn-sm btn-success pull-right" href="/admin/perawatan/<?= $row['id'] ?>">Buat Laporan Perawatan</a>
+															<a class="btn btn-sm btn-success pull-right" href="/admin/perawatan/tindakan-perawatan/<?= $row['id'] ?>">Lihat</a>
+															<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
 														</td>
 													</tr>
 												<?php endforeach; ?>
