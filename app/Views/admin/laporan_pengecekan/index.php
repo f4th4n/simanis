@@ -60,6 +60,7 @@
 <?= $this->section('js') ?>
 	<script>
 		$('#list-table').DataTable();
+		$('#list-table2').DataTable();
 
 		$('.delete-row').click(function() {
 			const res = confirm('Apakah anda yakin akan menghapus ini?')

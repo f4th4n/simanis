@@ -16,6 +16,7 @@ class Perawatan extends BaseController {
 		$data = [
 			'title' => 'Laporan Pengecekan',
 			'rows_perawatan' => $rows_perawatan_dto,
+			'rows_daftar_perawatan' => PerawatanModel::get_daftar_perawatan(),
 		];
 
 		return view('admin/perawatan/index', $data);

@@ -20,6 +20,18 @@ class PerawatanModel extends Model {
 		'keterangan',
 	];
 
+	static public function get_daftar_perawatan() {
+		$kondisi_inventaris_model = new KondisiInventarisModel();
+		$where = ['baik'];
+		$rows_kondisi_inventaris = $kondisi_inventaris_model->whereNotIn('kondisi', $where)->find();
+
+		$rows_kondisi_inventaris = array_map(function ($row) {
+			return KondisiInventarisModel::dto($row);
+		}, $rows_kondisi_inventaris);
+		
+		return $rows_kondisi_inventaris;
+	}
+
 	static public function dto($row) {
 		$user_model = new UserModel();
 		$inventaris_model = new InventarisModel();

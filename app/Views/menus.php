@@ -41,16 +41,16 @@ $role_id = session()->get('role_id');
 							<a href="/admin/perawatan"><i class="fa fa-gear"></i> Data Perawatan</a>
 						</li>
 						<li <?= strpos(current_url(), '/admin/mutasi') ? 'class="current-page"' : '' ?>>
-							<a href="/admin/mutasi"><i class="fa fa-gear"></i> Data Mutasi</a>
+							<a href="/admin/mutasi"><i class="fa fa-"></i> Data Mutasi</a>
 						</li>
 						<li <?= strpos(current_url(), '/admin/pengajuan') ? 'class="current-page"' : '' ?>>
-							<a href="/admin/pengajuan"><i class="fa fa-gear"></i> Pengajuan</a>
+							<a href="/admin/pengajuan"><i class="fa fa-"></i> Pengajuan</a>
 						</li>
 						<li <?= strpos(current_url(), '/admin/nilai-kekayaan') ? 'class="current-page"' : '' ?>>
-							<a href="/admin/nilai-kekayaan"><i class="fa fa-gear"></i> Nilai Kekayaan</a>
+							<a href="/admin/nilai-kekayaan"><i class="fa fa-"></i> Nilai Kekayaan</a>
 						</li>
 						<li <?= strpos(current_url(), '/admin/surat-perintah') ? 'class="current-page"' : '' ?>>
-							<a href="/admin/surat-perintah"><i class="fa fa-gear"></i> Surat Perintah</a>
+							<a href="/admin/surat-perintah"><i class="fa fa-"></i> Surat Perintah</a>
 						</li>
 					<?php elseif($role_id === 'pengecek'): ?>
 						<li <?= strpos(current_url(), '/admin/pengecek/laporan-pengecekan') ? 'class="current-page"' : '' ?>>

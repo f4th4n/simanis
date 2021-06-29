@@ -12,6 +12,7 @@ php spark db:seed InventarisSeeder
 php spark db:seed LaporanPengecekanSeeder
 php spark db:seed PerawatanSeeder
 php spark db:seed KondisiInventarisSeeder
+php spark db:seed MutasiSeeder
 ```
 
 ## Default Users
