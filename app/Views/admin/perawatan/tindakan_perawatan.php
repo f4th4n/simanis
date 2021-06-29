@@ -40,10 +40,11 @@
 											<thead>
 												<tr>
 													<th>NO</th>
-													<th>Id Inventaris</th>
+													<th>No Perawatan</th>
+													<th>No Inventaris</th>
 													<th>Nama Inventaris</th>
-													<th>Kondisi</th>
-													<th>Keterangan</th>
+													<th>Tanggal Perawatan</th>
+													<th>Biaya Perawatan</th>
 													<th></th>
 												</tr>
 											</thead>
@@ -51,10 +52,11 @@
 												<?php foreach ($rows_perawatan as $key => $row): ?>
 													<tr>
 														<td><?= $key + 1 ?></td>
-														<td><?= inventaris_id_text($row['inventaris_id']) ?></td>
+														<td><?= perawatan_id_text($row['id']) ?></td>
+														<td><?= inventaris_id_text($row['inventaris']['id']) ?></td>
 														<td><?= $row['inventaris']['nama'] ?></td>
-														<td><?= kondisi_text($row['kondisi_inventaris']['kondisi']) ?></td>
-														<td><?= $row['keterangan'] ?></td>
+														<td><?= $row['tanggal_perawatan'] ?></td>
+														<td>Rp <?= number_format_short($row['biaya_perawatan']) ?></td>
 														<td>
 															<a class="btn btn-sm btn-success pull-right" href="/admin/perawatan/tindakan-perawatan/<?= $row['id'] ?>">Lihat</a>
 															<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>

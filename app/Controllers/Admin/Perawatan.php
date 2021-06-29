@@ -20,7 +20,7 @@ class Perawatan extends BaseController {
 
 	public function tindakanPerawatan() {
 		$perawatan_model = new PerawatanModel();
-		$rows_perawatan = $perawatan_model->findAll();
+		$rows_perawatan = $perawatan_model->orderBy('id', 'desc')->findAll();
 		$rows_perawatan_dto = array_map(function($row) {
 			return PerawatanModel::dto($row);
 		}, $rows_perawatan);
@@ -73,19 +73,17 @@ class Perawatan extends BaseController {
 		$row_perawatan = $perawatan_model->where('kondisi_inventaris_id', $kondisi_inventaris_id)->first();
 
 		$validation_rule = [
-			'nama' => 'required|min_length[3]|max_length[512]',
 			'user-id' => 'required',
 			'inventaris-id' => 'required',
 			'tanggal-perawatan' => 'required',
 			'tanggal-selesai' => 'required',
 			'tempat-perawatan' => 'required',
 			'biaya-perawatan' => 'required',
-			'keterangan' => 'required',
 		];
 
 		if (!$this->validate($validation_rule)) {
 			session()->setFlashdata('validator', $this->validator);
-			return redirect()->to($failed_redirect_to);
+			return redirect()->to('/admin/perawatan/' . $kondisi_inventaris_id);
 		}
 
 		$data = PerawatanModel::rto($this->request, $kondisi_inventaris_id, true);
@@ -101,7 +99,7 @@ class Perawatan extends BaseController {
 
 		$msg = 'Berhasil membuat data perawatan';
 		session()->setFlashdata('msg', ['msg' => $msg, 'type' => 'success']);
-		return redirect()->to('/admin/perawatan');
+		return redirect()->to('/admin/perawatan/tindakan-perawatan');
 	}
 
 	public function delete($id) {
