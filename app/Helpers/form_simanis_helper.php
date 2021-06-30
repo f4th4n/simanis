@@ -76,6 +76,10 @@ function pengajuan_id_text($val) {
 	return 'PGJ-' . str_pad($val, 3, '0', STR_PAD_LEFT);
 }
 
+function surat_id_text($val) {
+	return 'PRT-' . str_pad($val, 3, '0', STR_PAD_LEFT);
+}
+
 function kondisi_text($kondisi_key) {
 	if ($kondisi_key === 'baik') {
 		return 'Baik';

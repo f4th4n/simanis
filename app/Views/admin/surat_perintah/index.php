@@ -21,25 +21,28 @@
 							<?php endif ?>
 
 							<div class="mb-4 mt-2">
-								<h4>Total nilai kekayaan <b>Rp <?= number_format($count_nilai_kekayaan, 0, ',', '.') ?></b> dari <b><?= $count_inventaris ?></b> inventaris.</h4>
 							</div>
 
 							<table id="list-table" class="table table-striped table-bordered dt-responsive nowrap">
 								<thead>
 									<tr>
-										<th>ID</th>
-										<th>No Inventaris</th>
-										<th>Nama</th>
-										<th>Nilai Kekayaan</th>
+										<th>No</th>
+										<th>No Surat</th>
+										<th>Tgl Terbit</th>
+										<th>Kepada</th>
+										<th>Perintah</th>
+										<th>Tgl Pelaksanaan</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($rows_inventaris as $row): ?>
+									<?php foreach ($rows_surat_perintah as $key => $row): ?>
 										<tr>
-											<td><?= $row['id'] ?></td>
-											<td><?= inventaris_id_text($row['id']) ?></td>
-											<td><?= $row['nama'] ?></td>
-											<td>Rp <?= number_format($row['nilai_kekayaan'], 0, ',', '.') ?></td>
+											<td><?= $key + 1 ?></td>
+											<td><?= surat_id_text($row['no_surat']) ?></td>
+											<td><?= $row['tanggal_terbit'] ?></td>
+											<td><?= $row['to_user'] ?></td>
+											<td><?= $row['perintah'] ?></td>
+											<td><?= $row['tanggal_pelaksanaan'] ?></td>
 										</tr>
 									<?php endforeach; ?>
 								</tbody>

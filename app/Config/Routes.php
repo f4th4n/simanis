@@ -81,6 +81,10 @@ $routes->post('/admin/pengajuan/create', '\App\Controllers\Admin\Pengajuan::save
 $routes->post('/admin/pengajuan/update/(:num)', '\App\Controllers\Admin\Pengajuan::save/$1');
 $routes->delete('/admin/pengajuan/delete/(:num)', '\App\Controllers\Admin\Pengajuan::delete/$1');
 
+
+$routes->get('/admin/surat-perintah', '\App\Controllers\Admin\SuratPerintah::index');
+$routes->get('/admin/surat-perintah/(:num)', '\App\Controllers\Admin\SuratPerintah::view/$1');
+
 $routes->get('/admin/admin', '\App\Controllers\Admin\Admin::index');
 $routes->get('/admin/admin/(:num)', '\App\Controllers\Admin\Admin::view/$1');
 $routes->get('/admin/admin/create', '\App\Controllers\Admin\Admin::create');

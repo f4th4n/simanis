@@ -13,7 +13,7 @@ class NilaiKekayaan extends BaseController {
 		$data = [
 			'title' => 'Nilai Kekayaan',
 			'rows_inventaris' => $rows_inventaris,
-			'count_nilai_kekayaan' => 200,
+			'count_nilai_kekayaan' => InventarisModel::total_kekayaan(),
 			'count_inventaris' => $inventaris_model->countAll(),
 		];
 

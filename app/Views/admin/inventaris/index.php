@@ -40,7 +40,7 @@
 											<td><?= $row['id'] ?></td>
 											<td><?= inventaris_id_text($row['id']) ?></td>
 											<td><?= $row['nama'] ?></td>
-											<td>TODO kondisi</td>
+											<td><?= kondisi_text($row['kondisi']) ?></td>
 											<td>
 												<a class="btn btn-sm btn-success pull-right" href="/admin/inventaris/<?= $row['id'] ?>">Lihat</a>
 												<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>

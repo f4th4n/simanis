@@ -50,7 +50,7 @@ $role_id = session()->get('role_id');
 							<a href="/admin/nilai-kekayaan"><i class="fa fa-money"></i> Nilai Kekayaan</a>
 						</li>
 						<li <?= strpos(current_url(), '/admin/surat-perintah') ? 'class="current-page"' : '' ?>>
-							<a href="/admin/surat-perintah"><i class="fa fa-"></i> Surat Perintah</a>
+							<a href="/admin/surat-perintah"><i class="fa fa-flag"></i> Surat Perintah</a>
 						</li>
 					<?php elseif($role_id === 'pengecek'): ?>
 						<li <?= strpos(current_url(), '/admin/pengecek/laporan-pengecekan') ? 'class="current-page"' : '' ?>>
