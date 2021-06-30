@@ -88,4 +88,15 @@ class PerawatanModel extends Model {
 
 		return $rto;
 	}
+
+	public static function count_by_month($month, $year) {
+		$db = db_connect();
+		$sql = '
+			SELECT SUM(biaya_perawatan) AS total FROM `perawatan`
+			WHERE YEAR(tanggal_perawatan) = '.$year.' AND MONTH(tanggal_perawatan) = '.$month.'
+		';
+
+		$row = $db->query($sql)->getRow();
+		return $row->total;
+	}
 }

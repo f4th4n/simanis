@@ -60,10 +60,61 @@
 								? 'hampir'
 								: 'telah' ?> <?= $row_pajak_expired->pesan ?: 'habis pajak' ?>. <a href="/admin/inventaris/<?= $row_pajak_expired->id ?>?update-batas-pakai=1">Update batas pakai</a></p>
 							<?php endforeach; ?>
+
+							<br />
+							<br />
+							<br />
+
+							<h2>Biaya Perawatan</h2>
+						  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+							<div id="chart_div"></div>
+							<?= json_encode($stats) ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+<script type="text/javascript">
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Biaya Perawatan');
+
+      data.addRows([
+				[0, <?= $stats[0] ?>],
+				[1, <?= $stats[1] ?>],
+				[2, <?= $stats[2] ?>],
+				[3, <?= $stats[3] ?>],
+				[4, <?= $stats[4] ?>],
+				[5, <?= $stats[5] ?>],
+				[6, <?= $stats[6] ?>],
+				[7, <?= $stats[7] ?>],
+				[8, <?= $stats[8] ?>],
+				[9, <?= $stats[9] ?>],
+				[10, <?= $stats[10] ?>],
+				[11, <?= $stats[11] ?>],
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Bulan'
+        },
+        vAxis: {
+          title: 'Biaya'
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+</script>
 <?= $this->endSection() ?>

@@ -27,7 +27,9 @@ f<?= $this->extend('default') ?>
 								<?= form_text('keterangan', 'Keterangan', $row_pengajuan['keterangan']) ?>
 
 								<div class="mt-5">
-									<button type="submit" class="btn btn-success pull-right">Simpan</button>
+									<?php if(session()->get('role_id') === 'admin'): ?>
+										<button type="submit" class="btn btn-success pull-right">Simpan</button>
+									<?php endif ?>
 									<a href="/admin/pengajuan" class="btn btn-danger pull-right">Kembali</a>
 								</div>
 							</form>

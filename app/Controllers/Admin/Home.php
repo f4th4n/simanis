@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\InventarisModel;
 use App\Models\KondisiInventarisModel;
+use App\Models\PerawatanModel;
 
 
 class Home extends BaseController {
@@ -23,7 +24,21 @@ class Home extends BaseController {
 		$data = [
 			'title' => 'Beranda',
 			'rows_pajak_expired' => $rows,
-			'summary' => $summary
+			'summary' => $summary,
+			'stats' => [
+				(int) PerawatanModel::count_by_month(1, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(2, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(3, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(4, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(5, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(6, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(7, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(8, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(9, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(10, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(11, date('Y')) ?: 0,
+				(int) PerawatanModel::count_by_month(12, date('Y')) ?: 0,
+			]
 		];
 		return view('admin/home/index', $data);
 	}
