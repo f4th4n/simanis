@@ -13,6 +13,7 @@
 
 <?= $this->section('content') ?>
 	<?php $flash = session()->getFlashdata('msg'); ?>
+	<?php $query_year = isset($_GET['year']) ? $_GET['year'] : date('Y'); ?>
 	<!-- page content -->
 	<div class="right_col" role="main">
 		<div class="">
@@ -66,9 +67,18 @@
 							<br />
 
 							<h2>Biaya Perawatan</h2>
+							<form method="GET">
+								<select name="year">
+									<?php $year = (int) date('Y'); ?>
+									<?php for($i = 2021; $i < ($year + 5); $i++): ?>
+										<option value="<?= $i ?>" <?= $query_year == $i ? 'selected="selected"' : '' ?>><?= $i ?></option>
+									<?php endfor ?>
+								</select>
+
+								<button>Submit</button>
+							</form>
 						  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 							<div id="chart_div"></div>
-							<?= json_encode($stats) ?>
 						</div>
 					</div>
 				</div>
