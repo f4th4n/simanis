@@ -27,7 +27,7 @@ f<?= $this->extend('default') ?>
 
 								<div class="mt-5">
 									<button type="submit" class="btn btn-success pull-right">Simpan</button>
-									<a href="/admin/pengajuan" class="btn btn-danger pull-right">Kembali</a>
+									<a href="/admin/pengecek/pengajuan" class="btn btn-danger pull-right">Kembali</a>
 								</div>
 							</form>
 						</div>

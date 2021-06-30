@@ -19,37 +19,26 @@
 									<?= $flash['msg'] ?>
 								</div>
 							<?php endif ?>
-
-							<div class="mb-4 mt-2">
-								<a href="/admin/pengajuan/create" class="btn btn-success">Tambah</a>
-							</div>
-
+							
 							<table id="list-table" class="table table-striped table-bordered dt-responsive nowrap">
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>No Pengajuan</th>
-										<th>ID Pengaju</th>
-										<th>Tgl Pengajuan</th>
-										<th>Nama Inventaris</th>
-										<th>Banyaknya</th>
-										<th>Keterangan</th>
-										<th></th>
+										<th>No Inventaris</th>
+										<th>Nama</th>
+										<th>Kondisi</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($rows_pengajuan as $key => $row): ?>
+									<?php foreach ($rows_inventaris as $row): ?>
 										<tr>
-											<td><?= $key + 1 ?></td>
-											<td><?= pengajuan_id_text($row['no_pengajuan']) ?></td>
-											<td><?= admin_id_text($row['user_id']) ?></td>
-											<td><?= $row['tanggal_pengajuan'] ?></td>
-											<td><?= $row['nama_inventaris'] ?></td>
-											<td><?= $row['total'] ?></td>
-											<td><?= $row['keterangan'] ?></td>
+											<td><?= $row['id'] ?></td>
+											<td><?= inventaris_id_text($row['id']) ?></td>
+											<td><?= $row['nama'] ?></td>
+											<td><?= kondisi_text($row['kondisi']) ?></td>
 											<td>
-												<a class="btn btn-sm btn-success pull-right" href="/admin/pengajuan/<?= $row['id'] ?>">Lihat</a>
-												<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
+												<a class="btn btn-sm btn-success pull-right" href="/admin/pengecek/inventaris/<?= $row['id'] ?>">Lihat</a>
 											</td>
 										</tr>
 									<?php endforeach; ?>
@@ -66,16 +55,6 @@
 <?= $this->section('js') ?>
 	<script>
 		$('#list-table').DataTable();
-
-		$('.delete-row').click(function() {
-			const res = confirm('Apakah anda yakin akan menghapus ini?')
-			if(res) {
-				const id = $(this).data('id')
-				fetch('/admin/pengajuan/delete/' + id, { method: 'DELETE' }).then(() => {
-					window.location.reload();
-				})
-			}
-		})
 	</script>
 
 <?= $this->endSection() ?>

@@ -21,7 +21,7 @@
 							<?php endif ?>
 
 							<div class="mb-4 mt-2">
-								<a href="/admin/pengajuan/create" class="btn btn-success">Tambah</a>
+								<a href="/admin/pengecek/pengajuan/create" class="btn btn-success">Tambah</a>
 							</div>
 
 							<table id="list-table" class="table table-striped table-bordered dt-responsive nowrap">
@@ -48,7 +48,7 @@
 											<td><?= $row['total'] ?></td>
 											<td><?= $row['keterangan'] ?></td>
 											<td>
-												<a class="btn btn-sm btn-success pull-right" href="/admin/pengajuan/<?= $row['id'] ?>">Lihat</a>
+												<a class="btn btn-sm btn-success pull-right" href="/admin/pengecek/pengajuan/<?= $row['id'] ?>">Lihat</a>
 												<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
 											</td>
 										</tr>
@@ -71,7 +71,7 @@
 			const res = confirm('Apakah anda yakin akan menghapus ini?')
 			if(res) {
 				const id = $(this).data('id')
-				fetch('/admin/pengajuan/delete/' + id, { method: 'DELETE' }).then(() => {
+				fetch('/admin/pengecek/pengajuan/delete/' + id, { method: 'DELETE' }).then(() => {
 					window.location.reload();
 				})
 			}

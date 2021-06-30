@@ -28,7 +28,7 @@
 								<div class="tile_count">
 									<div class="col-md-4 col-sm-4  tile_stats_count">
 										<span class="count_top"><i class="fa fa-futbol-o"></i> Total Inventaris</span>
-										<div class="count"><?= $summary['total_inventaris'] ?></div>
+										<div class="count green"><?= $summary['total_inventaris'] ?></div>
 									</div>
 									<div class="col-md-4 col-sm-4  tile_stats_count">
 										<span class="count_top"><i class="fa fa-clock-o"></i> Kondisi Baik</span>
@@ -37,12 +37,12 @@
 									</div>
 									<div class="col-md-4 col-sm-4  tile_stats_count">
 										<span class="count_top"><i class="fa fa-clock-o"></i> Kondisi Kurang Baik</span>
-										<div class="count green"><?= $summary['kondisi_kurang_baik'] ?></div>
+										<div class="count"><?= $summary['kondisi_kurang_baik'] ?></div>
 										<span class="count_bottom">Jumlah inventaris</span>
 									</div>
 									<div class="col-md-4 col-sm-4  tile_stats_count">
 										<span class="count_top"><i class="fa fa-clock-o"></i> Kondisi Rusak</span>
-										<div class="count green"><?= $summary['kondisi_rusak'] ?></div>
+										<div class="count"><?= $summary['kondisi_rusak'] ?></div>
 										<span class="count_bottom">Jumlah inventaris</span>
 									</div>
 									<div class="col-md-6 col-sm-6  tile_stats_count">

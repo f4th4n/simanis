@@ -80,4 +80,33 @@ class KondisiInventarisModel extends Model {
 			$model->update($row_kondisi_inventaris['id'], $data);
 		}
 	}
+
+	public static function countByKondisi($kondisi) {
+		/*$sql ='
+			SELECT COUNT(DISTINCT(inventaris_id)) AS count
+			FROM `kondisi_inventaris` where kondisi=\'baik\'
+			ORDER BY id DESC
+		';
+
+		$db = db_connect();
+		$rows = $db->query($sql);
+		$rows = $rows->getResult();
+		*/
+
+		$kondisi_inventaris_model = new KondisiInventarisModel();
+		$inventaris_model = new InventarisModel();
+		$rows_inventaris = $inventaris_model->findAll();
+
+		$count = 0;
+		foreach($rows_inventaris as $row) {
+			$kondisi_inventaris = $kondisi_inventaris_model->where('inventaris_id', $row['id'])->orderBy('id', 'desc')->first();
+			$curr_kondisi = $kondisi_inventaris ? $kondisi_inventaris['kondisi'] : 'baik';
+
+			if($curr_kondisi === $kondisi) {
+				$count++;
+			}
+		}
+
+		return $count;
+	}
 }

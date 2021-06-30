@@ -107,6 +107,16 @@ $routes->post('/admin/pengecek/laporan-pengecekan/update-kondisi', '\App\Control
 $routes->post('/admin/pengecek/laporan-pengecekan/update/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::save/$1');
 $routes->delete('/admin/pengecek/laporan-pengecekan/delete/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::delete/$1');
 
+$routes->get('/admin/pengecek/inventaris', '\App\Controllers\Pengecek\Inventaris::index');
+$routes->get('/admin/pengecek/inventaris/(:num)', '\App\Controllers\Pengecek\Inventaris::view/$1');
+
+$routes->get('/admin/pengecek/pengajuan', '\App\Controllers\Pengecek\Pengajuan::index');
+$routes->get('/admin/pengecek/pengajuan/(:num)', '\App\Controllers\Pengecek\Pengajuan::view/$1');
+$routes->get('/admin/pengecek/pengajuan/create', '\App\Controllers\Pengecek\Pengajuan::create');
+$routes->post('/admin/pengecek/pengajuan/create', '\App\Controllers\Pengecek\Pengajuan::save');
+$routes->post('/admin/pengecek/pengajuan/update/(:num)', '\App\Controllers\Pengecek\Pengajuan::save/$1');
+$routes->delete('/admin/pengecek/pengajuan/delete/(:num)', '\App\Controllers\Pengecek\Pengajuan::delete/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
