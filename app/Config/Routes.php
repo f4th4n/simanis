@@ -121,6 +121,12 @@ $routes->get('/admin/pengecek/surat-perintah', '\App\Controllers\Pengecek\SuratP
 $routes->get('/admin/pengecek/surat-perintah/(:num)', '\App\Controllers\Pengecek\SuratPerintah::view/$1');
 
 // Pemimpin
+$routes->get('/admin/pemimpin/surat-perintah', '\App\Controllers\Pemimpin\SuratPerintah::index');
+$routes->get('/admin/pemimpin/surat-perintah/(:num)', '\App\Controllers\Pemimpin\SuratPerintah::view/$1');
+$routes->get('/admin/pemimpin/surat-perintah/create', '\App\Controllers\Pemimpin\SuratPerintah::create');
+$routes->post('/admin/pemimpin/surat-perintah/create', '\App\Controllers\Pemimpin\SuratPerintah::save');
+$routes->post('/admin/pemimpin/surat-perintah/update/(:num)', '\App\Controllers\Pemimpin\SuratPerintah::save/$1');
+$routes->delete('/admin/pemimpin/surat-perintah/delete/(:num)', '\App\Controllers\Pemimpin\SuratPerintah::delete/$1');
 
 
 /*

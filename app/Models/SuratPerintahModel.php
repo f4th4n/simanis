@@ -30,11 +30,10 @@ class SuratPerintahModel extends Model {
 	static public function rto($request, $is_new) {
 		$model = new SuratPerintahModel();
 		$rto = [
-			'no_surat' => $request->getPost('keterangan'),
-			'tanggal_terbit' => date_create_from_format('d-m-Y', $request->getPost('tanggal-surat_perintah'))->format('Y-m-d 0:0:0'),
-			'to_user' => $request->getPost('keterangan'),
-			'perintah' => $request->getPost('keterangan'),
-			'tanggal_pelaksanaan' => $request->getPost('keterangan'),
+			'tanggal_terbit' => date_create_from_format('d-m-Y', $request->getPost('tanggal-terbit'))->format('Y-m-d 0:0:0'),
+			'to_user' => $request->getPost('to-user'),
+			'perintah' => $request->getPost('perintah'),
+			'tanggal_pelaksanaan' => date_create_from_format('d-m-Y', $request->getPost('tanggal-pelaksanaan'))->format('Y-m-d 0:0:0'),
 		];
 
 		if ($is_new) {
