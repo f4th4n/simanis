@@ -117,6 +117,10 @@ $routes->post('/admin/pengecek/pengajuan/create', '\App\Controllers\Pengecek\Pen
 $routes->post('/admin/pengecek/pengajuan/update/(:num)', '\App\Controllers\Pengecek\Pengajuan::save/$1');
 $routes->delete('/admin/pengecek/pengajuan/delete/(:num)', '\App\Controllers\Pengecek\Pengajuan::delete/$1');
 
+$routes->get('/admin/pengecek/surat-perintah', '\App\Controllers\Pengecek\SuratPerintah::index');
+$routes->get('/admin/pengecek/surat-perintah/(:num)', '\App\Controllers\Pengecek\SuratPerintah::view/$1');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

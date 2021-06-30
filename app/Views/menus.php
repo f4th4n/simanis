@@ -62,6 +62,9 @@ $role_id = session()->get('role_id');
 						<li <?= strpos(current_url(), '/admin/pengecek/pengajuan') ? 'class="current-page"' : '' ?>>
 							<a href="/admin/pengecek/pengajuan"><i class="fa fa-shopping-basket"></i> Pengajuan</a>
 						</li>
+						<li <?= strpos(current_url(), '/admin/pengecek/surat-perintah') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/pengecek/surat-perintah"><i class="fa fa-flag"></i> Surat Perintah</a>
+						</li>
 					<?php endif ?>
 				</ul>
 			</div>
