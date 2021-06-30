@@ -52,6 +52,10 @@ function form_date($column_name, $text, $value = '', $attr = '') {
 	<?php
 }
 
+function admin_id_text($val) {
+	return 'ADM-' . str_pad($val, 3, '0', STR_PAD_LEFT);
+}
+
 function inventaris_id_text($val) {
 	return 'INV-' . str_pad($val, 3, '0', STR_PAD_LEFT);
 }
@@ -66,6 +70,10 @@ function laporan_pengecekan_id_text($val) {
 
 function mutasi_id_text($val) {
 	return 'MTS-' . str_pad($val, 3, '0', STR_PAD_LEFT);
+}
+
+function pengajuan_id_text($val) {
+	return 'PGJ-' . str_pad($val, 3, '0', STR_PAD_LEFT);
 }
 
 function kondisi_text($kondisi_key) {

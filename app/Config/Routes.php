@@ -74,6 +74,13 @@ $routes->post('/admin/mutasi/create', '\App\Controllers\Admin\Mutasi::save');
 $routes->post('/admin/mutasi/update/(:num)', '\App\Controllers\Admin\Mutasi::save/$1');
 $routes->delete('/admin/mutasi/delete/(:num)', '\App\Controllers\Admin\Mutasi::delete/$1');
 
+$routes->get('/admin/pengajuan', '\App\Controllers\Admin\Pengajuan::index');
+$routes->get('/admin/pengajuan/(:num)', '\App\Controllers\Admin\Pengajuan::view/$1');
+$routes->get('/admin/pengajuan/create', '\App\Controllers\Admin\Pengajuan::create');
+$routes->post('/admin/pengajuan/create', '\App\Controllers\Admin\Pengajuan::save');
+$routes->post('/admin/pengajuan/update/(:num)', '\App\Controllers\Admin\Pengajuan::save/$1');
+$routes->delete('/admin/pengajuan/delete/(:num)', '\App\Controllers\Admin\Pengajuan::delete/$1');
+
 $routes->get('/admin/admin', '\App\Controllers\Admin\Admin::index');
 $routes->get('/admin/admin/(:num)', '\App\Controllers\Admin\Admin::view/$1');
 $routes->get('/admin/admin/create', '\App\Controllers\Admin\Admin::create');

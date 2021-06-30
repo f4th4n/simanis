@@ -44,7 +44,7 @@ $role_id = session()->get('role_id');
 							<a href="/admin/mutasi"><i class="fa fa-car"></i> Data Mutasi</a>
 						</li>
 						<li <?= strpos(current_url(), '/admin/pengajuan') ? 'class="current-page"' : '' ?>>
-							<a href="/admin/pengajuan"><i class="fa fa-"></i> Pengajuan</a>
+							<a href="/admin/pengajuan"><i class="fa fa-shopping-basket"></i> Pengajuan</a>
 						</li>
 						<li <?= strpos(current_url(), '/admin/nilai-kekayaan') ? 'class="current-page"' : '' ?>>
 							<a href="/admin/nilai-kekayaan"><i class="fa fa-"></i> Nilai Kekayaan</a>
