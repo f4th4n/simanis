@@ -88,6 +88,8 @@ $routes->post('/admin/admin/create', '\App\Controllers\Admin\Admin::save');
 $routes->post('/admin/admin/update/(:num)', '\App\Controllers\Admin\Admin::save/$1');
 $routes->delete('/admin/admin/delete/(:num)', '\App\Controllers\Admin\Admin::delete/$1');
 
+$routes->get('/admin/nilai-kekayaan', '\App\Controllers\Admin\NilaiKekayaan::index');
+
 // Pengecek
 $routes->get('/admin/pengecek/laporan-pengecekan/inventaris/(:num)', '\App\Controllers\Pengecek\LaporanPengecekan::getInventaris/$1');
 
