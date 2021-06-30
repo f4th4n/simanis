@@ -2,6 +2,11 @@ f<?= $this->extend('default') ?>
 
 <?= $this->section('content') ?>
 	<?php $validator = session()->getFlashdata('validator'); ?>
+
+	<?php
+		$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
+	?>
+
 	<!-- page content -->
 	<div class="right_col" role="main">
 		<div class="">
@@ -32,7 +37,7 @@ f<?= $this->extend('default') ?>
 									</div>
 								</div>
 
-								<?= form_text('perintah', 'Perintah') ?>
+								<?= form_text('perintah', 'Perintah', $msg) ?>
 								<?= form_text('tanggal-pelaksanaan', 'Tanggal Pelaksanaan') ?>
 
 								<div class="mt-5">

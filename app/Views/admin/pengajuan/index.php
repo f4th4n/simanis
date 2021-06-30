@@ -50,10 +50,15 @@
 											<td><?= $row['total'] ?></td>
 											<td><?= $row['keterangan'] ?></td>
 											<td>
+												<?php if(session()->get('role_id') === 'pemimpin'): ?>
+													<a href="/admin/pemimpin/surat-perintah/create?msg=Pengajuan <?= $row['nama_inventaris'] ?>" class="btn btn-sm btn-secondary pull-right" data-id="<?= $row['id'] ?>">Buat Surat Perintah</a>
+												<?php endif ?>
 												<a class="btn btn-sm btn-success pull-right" href="/admin/pengajuan/<?= $row['id'] ?>">Lihat</a>
+
 												<?php if(session()->get('role_id') === 'admin'): ?>
 													<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
 												<?php endif ?>
+
 											</td>
 										</tr>
 									<?php endforeach; ?>
