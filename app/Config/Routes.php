@@ -120,6 +120,8 @@ $routes->delete('/admin/pengecek/pengajuan/delete/(:num)', '\App\Controllers\Pen
 $routes->get('/admin/pengecek/surat-perintah', '\App\Controllers\Pengecek\SuratPerintah::index');
 $routes->get('/admin/pengecek/surat-perintah/(:num)', '\App\Controllers\Pengecek\SuratPerintah::view/$1');
 
+// Pemimpin
+
 
 /*
  * --------------------------------------------------------------------

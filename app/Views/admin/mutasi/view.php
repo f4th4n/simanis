@@ -35,7 +35,9 @@
 								<?= form_text('keterangan', 'Keterangan', $row_mutasi['keterangan']) ?>
 
 								<div class="mt-5">
-									<button type="submit" class="btn btn-success pull-right">Simpan</button>
+									<?php if(session()->get('role_id') === 'admin'): ?>
+										<button type="submit" class="btn btn-success pull-right">Simpan</button>
+									<?php endif ?>
 									<a href="/admin/mutasi" class="btn btn-danger pull-right">Kembali</a>
 								</div>
 							</form>

@@ -44,7 +44,9 @@
 													<th>Nama Inventaris</th>
 													<th>Kondisi</th>
 													<th>Keterangan</th>
-													<th></th>
+													<?php if(session()->get('role_id') === 'admin'): ?>
+														<th></th>
+													<?php endif ?>
 												</tr>
 											</thead>
 											<tbody>
@@ -55,9 +57,11 @@
 														<td><?= $row['inventaris']['nama'] ?></td>
 														<td><?= kondisi_text($row['kondisi']) ?></td>
 														<td><?= $row['informasi'] ?></td>
-														<td>
-															<a class="btn btn-sm btn-success pull-right" href="/admin/perawatan/<?= $row['id'] ?>">Buat Laporan Perawatan</a>
-														</td>
+														<?php if(session()->get('role_id') === 'admin'): ?>
+															<td>
+																<a class="btn btn-sm btn-success pull-right" href="/admin/perawatan/<?= $row['id'] ?>">Buat Laporan Perawatan</a>
+															</td>
+														<?php endif ?>
 													</tr>
 												<?php endforeach; ?>
 											</tbody>

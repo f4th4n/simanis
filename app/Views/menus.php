@@ -65,6 +65,25 @@ $role_id = session()->get('role_id');
 						<li <?= strpos(current_url(), '/admin/pengecek/surat-perintah') ? 'class="current-page"' : '' ?>>
 							<a href="/admin/pengecek/surat-perintah"><i class="fa fa-flag"></i> Surat Perintah</a>
 						</li>
+					<?php elseif($role_id === 'pemimpin'): ?>
+						<li <?= strpos(current_url(), '/admin/inventaris') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/inventaris"><i class="fa fa-laptop"></i> Inventaris</a>
+						</li>
+						<li <?= strpos(current_url(), '/admin/laporan-pengecekan') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/laporan-pengecekan"><i class="fa fa-file"></i> Laporan Pengecekan</a>
+						</li>
+						<li <?= strpos(current_url(), '/admin/perawatan') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/perawatan"><i class="fa fa-gear"></i> Data Perawatan</a>
+						</li>
+						<li <?= strpos(current_url(), '/admin/mutasi') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/mutasi"><i class="fa fa-car"></i> Data Mutasi</a>
+						</li>
+						<li <?= strpos(current_url(), '/admin/pengajuan') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/pengajuan"><i class="fa fa-shopping-basket"></i> Pengajuan</a>
+						</li>
+						<li <?= strpos(current_url(), '/admin/nilai-kekayaan') ? 'class="current-page"' : '' ?>>
+							<a href="/admin/nilai-kekayaan"><i class="fa fa-money"></i> Nilai Kekayaan</a>
+						</li>
 					<?php endif ?>
 				</ul>
 			</div>

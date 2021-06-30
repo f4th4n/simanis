@@ -59,7 +59,9 @@
 														<td>Rp <?= number_format_short($row['biaya_perawatan']) ?></td>
 														<td>
 															<a class="btn btn-sm btn-success pull-right" href="/admin/perawatan/tindakan-perawatan/<?= $row['id'] ?>">Lihat</a>
-															<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
+															<?php if(session()->get('role_id') === 'admin'): ?>
+																<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
+															<?php endif ?>
 														</td>
 													</tr>
 												<?php endforeach; ?>

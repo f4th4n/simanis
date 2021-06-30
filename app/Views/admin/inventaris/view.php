@@ -27,12 +27,15 @@
 							<form action="/admin/inventaris/update/<?= $row_inventaris['id'] ?>" method="post" class="form-horizontal form-label-left" enctype="multipart/form-data">
 								<input type="hidden" name="id" value="<?= $row_inventaris['id'] ?>">
 
-								<div class="form-group row">
-									<label class="control-label col-md-3 col-sm-3 col-xs-3">Foto</label>
-									<div class="col-md-9 col-sm-9 col-xs-9">
-										<input name="foto" type="file" value="">
+								<?php if(session()->get('role_id') === 'admin'): ?>
+									<div class="form-group row">
+										<label class="control-label col-md-3 col-sm-3 col-xs-3">Foto</label>
+										<div class="col-md-9 col-sm-9 col-xs-9">
+											<input name="foto" type="file" value="">
+										</div>
 									</div>
-								</div>
+								<?php endif ?>
+								
 								<?= form_text('no-inventaris', 'No Inventaris', inventaris_id_text($row_inventaris['id']), 'readonly="readonly"') ?>
 								<?= form_text('nama', 'Nama', $row_inventaris['nama']) ?>
 								<?= form_text('no-seri', 'No Seri', $row_inventaris['no_seri']) ?>
@@ -46,7 +49,9 @@
 								<?= form_text('pesan', 'Pesan Jatuh Tempo', $row_inventaris['pesan'] ?: 'habis pajak', 'Pesan saat mendekati jatuh tempo') ?>
 
 								<div class="mt-5">
-									<button type="submit" class="btn btn-success pull-right">Simpan</button>
+									<?php if(session()->get('role_id') === 'admin'): ?>
+										<button type="submit" class="btn btn-success pull-right">Simpan</button>
+									<?php endif ?>
 									<a href="/admin/inventaris" class="btn btn-danger pull-right">Kembali</a>
 								</div>
 							</form>

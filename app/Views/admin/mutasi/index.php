@@ -21,7 +21,9 @@
 							<?php endif ?>
 
 							<div class="mb-4 mt-2">
-								<a href="/admin/mutasi/create" class="btn btn-success">Tambah</a>
+								<?php if(session()->get('role_id') === 'admin'): ?>
+									<a href="/admin/mutasi/create" class="btn btn-success">Tambah</a>
+								<?php endif ?>
 							</div>
 
 							<table id="list-table" class="table table-striped table-bordered dt-responsive nowrap">
@@ -49,7 +51,9 @@
 											<td><?= $row['lokasi_tujuan'] ?></td>
 											<td>
 												<a class="btn btn-sm btn-success pull-right" href="/admin/mutasi/<?= $row['id'] ?>">Lihat</a>
-												<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
+												<?php if(session()->get('role_id') === 'admin'): ?>
+													<button class="delete-row btn btn-sm btn-danger pull-right" data-id="<?= $row['id'] ?>">Hapus</button>
+												<?php endif ?>
 											</td>
 										</tr>
 									<?php endforeach; ?>
