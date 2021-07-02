@@ -99,18 +99,19 @@ function drawBasic() {
       data.addColumn('number', 'Biaya Perawatan');
 
       data.addRows([
-				[0, <?= $stats[0] ?>],
-				[1, <?= $stats[1] ?>],
-				[2, <?= $stats[2] ?>],
-				[3, <?= $stats[3] ?>],
-				[4, <?= $stats[4] ?>],
-				[5, <?= $stats[5] ?>],
-				[6, <?= $stats[6] ?>],
-				[7, <?= $stats[7] ?>],
-				[8, <?= $stats[8] ?>],
-				[9, <?= $stats[9] ?>],
-				[10, <?= $stats[10] ?>],
-				[11, <?= $stats[11] ?>],
+				[0, 0],
+				[1, <?= $stats[0] ?>],
+				[2, <?= $stats[1] ?>],
+				[3, <?= $stats[2] ?>],
+				[4, <?= $stats[3] ?>],
+				[5, <?= $stats[4] ?>],
+				[6, <?= $stats[5] ?>],
+				[7, <?= $stats[6] ?>],
+				[8, <?= $stats[7] ?>],
+				[9, <?= $stats[8] ?>],
+				[10, <?= $stats[9] ?>],
+				[11, <?= $stats[10] ?>],
+				[12, <?= $stats[11] ?>],
       ]);
 
       var options = {

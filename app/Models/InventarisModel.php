@@ -64,7 +64,7 @@ class InventarisModel extends Model {
 		$sql =
 			'
 			SELECT * FROM `inventaris` 
-			WHERE `batas_pakai` > (curdate() - interval ' .
+			WHERE `batas_pakai` < (curdate() + interval ' .
 			$day .
 			' day)
 			ORDER BY `batas_pakai`
@@ -78,7 +78,7 @@ class InventarisModel extends Model {
 			$test = date_create_from_format('Y-m-d H:i:s', $row->batas_pakai);
 			$today = new \DateTime();
 			$today->setTime(23, 59, 59);
-			$row->status = $test < $today ? 'almost' : 'expired';
+			$row->status = $test < $today ? 'expired' : 'almost';
 		}
 
 		return $rows;
