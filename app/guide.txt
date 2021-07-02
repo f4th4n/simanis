@@ -1,0 +1,2 @@
+vector:
+when using inkscape, export as 200 dpi

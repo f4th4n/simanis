@@ -87,7 +87,7 @@ class Inventaris extends BaseController {
 
 		// file upload handler
 		$file_foto = $this->request->getFile('foto');
-		if ($file_foto->isValid()) {
+		if ($file_foto && $file_foto->isValid()) {
 			$foto_path = $file_foto->store();
 			$data['foto'] = $foto_path;
 		}
