@@ -22,7 +22,7 @@
 								<?= form_text('merk', 'Merk') ?>
 								<?= form_text('warna', 'Warna') ?>
 								<?= form_date('tanggal-didaftarkan', 'Tanggal Didaftarkan') ?>
-								<?= form_number('nilai-kekayaan', 'Nilai Kekayaan') ?>
+								<?= form_number('nilai-kekayaan', 'Nilai Kekayaan', '', '', 'rupiah') ?>
 								<?= form_text('lokasi-penempatan', 'Lokasi Penempatan') ?>
 								<?= form_date('batas-pakai', 'Batas Pakai') ?>
 								<?= form_text('keterangan', 'Keterangan') ?>
