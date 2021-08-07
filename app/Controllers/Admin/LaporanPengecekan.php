@@ -42,6 +42,9 @@ class LaporanPengecekan extends BaseController {
 
 		$laporan_pengecekan_model = new LaporanPengecekanModel();
 		$laporan_pengecekan_model->delete($id);
+
+		$kondisi_inventaris_model = new KondisiInventarisModel();
+		$kondisi_inventaris_model->where('laporan_pengecekan_id', $id)->delete();
 	}
 
 	public function kondisiInventaris($laporan_pengecekan_id) {

@@ -5,6 +5,8 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\InventarisModel;
 use App\Models\KondisiInventarisModel;
+use App\Models\MutasiModel;
+use App\Models\PerawatanModel;
 
 class Inventaris extends BaseController {
 	public function index() {
@@ -54,6 +56,15 @@ class Inventaris extends BaseController {
 
 		$inventaris_model = new InventarisModel();
 		$inventaris_model->delete($id);
+
+		$kondisi_inventaris_model = new KondisiInventarisModel();
+		$kondisi_inventaris_model->where('user_id', $id)->delete();
+
+		$mutasi_model = new MutasiModel();
+		$mutasi_model->where('inventaris_id', $id)->delete();
+
+		$perawatan_model = new PerawatanModel();
+		$perawatan_model->where('inventaris_id', $id)->delete();
 	}
 
 	public function save($id = null) {

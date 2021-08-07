@@ -4,6 +4,10 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\KondisiInventarisModel;
+use App\Models\LaporanPengecekanModel;
+use App\Models\PengajuanModel;
+use App\Models\PerawatanModel;
 
 class Admin extends BaseController {
 	public function index() {
@@ -42,6 +46,18 @@ class Admin extends BaseController {
 
 		$admin_model = new UserModel();
 		$admin_model->delete($id);
+
+		$kondisi_inventaris_model = new KondisiInventarisModel();
+		$kondisi_inventaris_model->where('user_id', $id)->delete();
+
+		$laporan_pengecekan_model = new LaporanPengecekanModel();
+		$laporan_pengecekan_model->where('user_id', $id)->delete();
+
+		$pengajuan_model = new PengajuanModel();
+		$pengajuan_model->where('user_id', $id)->delete();
+
+		$perawatan_model = new PerawatanModel();
+		$perawatan_model->where('user_id', $id)->delete();
 	}
 
 	public function save($id = null) {
