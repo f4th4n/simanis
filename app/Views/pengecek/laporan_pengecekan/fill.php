@@ -230,6 +230,7 @@ $('#scan-barang').click(function() {
 	async function onScanSuccess(qrMessage) {
 		// handle the scanned code as you like, for example:
 		console.log(`QR matched = ${qrMessage}`);
+		qrMessage = qrMessage.replace('INV-', '');
 		const inventarisId = parseInt(qrMessage);
 		if(isNaN(inventarisId)) return alert('Kode inventaris tidak ditemukan, periksa kembali QR code. [' + qrMessage + ']')
 
