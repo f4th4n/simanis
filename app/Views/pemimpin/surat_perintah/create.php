@@ -38,7 +38,7 @@ f<?= $this->extend('default') ?>
 								</div>
 
 								<?= form_text('perintah', 'Perintah', $msg) ?>
-								<?= form_text('tanggal-pelaksanaan', 'Tanggal Pelaksanaan') ?>
+								<?= form_date('tanggal-pelaksanaan', 'Tanggal Pelaksanaan') ?>
 
 								<div class="mt-5">
 									<button type="submit" class="btn btn-success pull-right">Simpan</button>
