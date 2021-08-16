@@ -76,6 +76,45 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-md-12 col-sm-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<h2>Riwayat Perawatan</h2>
+							<div class="clearfix"></div>
+						</div>
+						<div class="x_content">
+										<table id="list-table" class="table table-striped table-bordered dt-responsive nowrap">
+											<thead>
+												<tr>
+													<th>NO</th>
+													<th>No Perawatan</th>
+													<th>No Inventaris</th>
+													<th>Nama Inventaris</th>
+													<th>Tanggal Perawatan</th>
+													<th>Biaya Perawatan</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php foreach ($rows_perawatan as $key => $row): ?>
+													<tr>
+														<td><?= $key + 1 ?></td>
+														<td><?= perawatan_id_text($row['id']) ?></td>
+														<td><?= inventaris_id_text($row['inventaris']['id']) ?></td>
+														<td><?= $row['inventaris']['nama'] ?></td>
+														<td><?= $row['tanggal_perawatan'] ?></td>
+														<td>Rp <?= number_format_short($row['biaya_perawatan']) ?></td>
+														<td>
+															<a class="btn btn-sm btn-success pull-right" href="/admin/perawatan/tindakan-perawatan/<?= $row['id'] ?>">Lihat</a>
+														</td>
+													</tr>
+												<?php endforeach; ?>
+											</tbody>
+										</table>
+						</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -43,7 +43,7 @@
 
 
 								<div class="mt-5">
-									<a href="/admin/perawatan/tindakan-perawatan" class="btn btn-danger pull-right">Kembali</a>
+									<a href="javascript:history.back()" class="btn btn-danger pull-right">Kembali</a>
 								</div>
 							</form>
 						</div>
