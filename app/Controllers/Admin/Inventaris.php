@@ -58,7 +58,7 @@ class Inventaris extends BaseController {
 		$inventaris_model->delete($id);
 
 		$kondisi_inventaris_model = new KondisiInventarisModel();
-		$kondisi_inventaris_model->where('user_id', $id)->delete();
+		$kondisi_inventaris_model->where('inventaris_id', $id)->delete();
 
 		$mutasi_model = new MutasiModel();
 		$mutasi_model->where('inventaris_id', $id)->delete();
