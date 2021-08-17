@@ -31,9 +31,16 @@ class Inventaris extends BaseController {
 		$inventaris_model = new InventarisModel();
 		$row_inventaris = $inventaris_model->find($id);
 
+		$perawatan_model = new PerawatanModel();
+		$rows_perawatan = $perawatan_model->where('inventaris_id', $id)->orderBy('id', 'desc')->findAll();
+		$rows_perawatan_dto = array_map(function($row) {
+			return PerawatanModel::dto($row);
+		}, $rows_perawatan);
+
 		$data = [
 			'title' => 'Data Inventaris',
 			'row_inventaris' => InventarisModel::dto($row_inventaris),
+			'rows_perawatan' => $rows_perawatan_dto,
 		];
 
 		return view('admin/inventaris/view', $data);
