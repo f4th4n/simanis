@@ -16,7 +16,6 @@ class AddInventaris extends Migration {
 			'no_inventaris' => [
 				'type' => 'INT',
 				'constraint' => 11,
-				'unique' => true,
 			],
 			'nama' => [
 				'type' => 'VARCHAR',

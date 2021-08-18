@@ -28,7 +28,6 @@ class AddPerawatan extends Migration
 			'nomor_perawatan' => [
 				'type' => 'INT',
 				'constraint' => 11,
-				'unique' => true,
 				'unsigned' => true,
 			],
 			'tanggal_perawatan' => [
